@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <!-- Métadonnées globales et imports de police / CSS -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marius — Portfolio Futuriste</title>
+    <meta name="description" content="Portfolio ultra-moderne de Marius, designer et développeur front-end." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Fond animé simulant une nébuleuse d'étoiles -->
+    <div class="stars" aria-hidden="true"></div>
+    <header class="hero hero-single" id="top">
+      <!-- Navigation principale avec bouton de thème -->
+      <nav class="nav">
+        <div class="logo">M.</div>
+        <ul>
+          <li><a href="#experience">Expérience</a></li>
+          <li><a href="#formation">Formation</a></li>
+          <li><a href="#projects">Projets</a></li>
+        </ul>
+        <button class="spark-btn" id="themeToggle" aria-label="Changer de thème">Mode</button>
+      </nav>
+      <div class="hero-wrapper">
+        <div class="hero-text">
+          <p class="pill">Alternance Data &amp; IA</p>
+          <h1>Marius Badoz</h1>
+          <h2>Apprenti ingénieur Big Data &amp; Machine Learning</h2>
+          <p class="lead">
+            Passionné par l'innovation, j'explore les solutions data qui optimisent la performance métier et ouvrent de
+            nouvelles perspectives produits. Je cherche une équipe capable de bousculer la façon dont on traite, gouverne et raconte la donnée.
+          </p>
+          <div class="hero-contact">
+            <a href="tel:+33668272696" class="ghost-link">06 68 27 26 96</a>
+            <a href="mailto:badozmarius@gmail.com" class="ghost-link">badozmarius@gmail.com</a>
+            <span class="pill muted">Basé à Paris · Handball N3</span>
+          </div>
+          <div class="hero-cta">
+            <a href="#experience" class="spark-btn primary">Voir mes expériences</a>
+            <a href="#projects" class="ghost-link">Dashboard Streamlit →</a>
+          </div>
+        </div>
+        <div class="hero-photo" aria-label="Portrait de Marius Badoz">
+          <div class="hero-bubble">
+            <img src="image/photoDeProfil.jpg" alt="Portrait de Marius Badoz" />
+          </div>
+          <p>Data craftsmanship · Cloud &amp; IA appliquée</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Section Expérience : contenu issu du CV -->
+      <div class="timeline-carousel" aria-live="polite">
+        <div class="timeline-slides">
+          <section class="panel experience" id="experience">
+            <div class="panel-header">
+              <p class="pill">Expérience</p>
+              <h2>Données sensibles, automatisation et produits augmentés</h2>
+            </div>
+            <div class="timeline experience-timeline">
+              <div class="timeline-track" aria-hidden="true">
+                <div class="timeline-progress"></div>
+              </div>
+              <article class="timeline-card">
+                <div class="timeline-head">
+                  <div class="timeline-node"></div>
+                  <div class="timeline-logo">
+                    <img src="image/logo_grouapama_support_services.png" alt="Logo Groupama Supports et Services" loading="lazy" />
+                  </div>
+                  <div>
+                    <span class="pill">Août 2025 — Aujourd’hui</span>
+                    <p class="experience-meta">Groupama Supports et Services · Paris</p>
+                  </div>
+                </div>
+                <h3>Ingénieur data apprenti</h3>
+                <ul>
+                  <li>Optimisation des traitements sur de gros volumes de données financières confidentielles.</li>
+                  <li>Gestion de l'infocentre des flux financiers de Groupama Épargne Salariale.</li>
+                </ul>
+              </article>
+              <article class="timeline-card">
+                <div class="timeline-head">
+                  <div class="timeline-node"></div>
+                  <div class="timeline-logo">
+                    <img src="image/Logo-Groupama-2025.webp" alt="Logo Groupama Centre Atlantique" loading="lazy" />
+                  </div>
+                  <div>
+                    <span class="pill">Août 2024 — Août 2025</span>
+                    <p class="experience-meta">Groupama Centre Atlantique · Niort</p>
+                  </div>
+                </div>
+                <h3>Technicien pilotage &amp; organisation</h3>
+                <ul>
+                  <li>Automatisation des processus de pilotage et récupération de données (API, VBA, Python, SQL).</li>
+                  <li>Conception d'applications décisionnelles pour plusieurs services sur QlikSense.</li>
+                  <li>Support aux projets de refonte (contacts, cadrage, cahier des charges).</li>
+                  <li>Campagne SMS marketing en HTML, CSS et JavaScript.</li>
+                </ul>
+              </article>
+              <article class="timeline-card">
+                <div class="timeline-head">
+                  <div class="timeline-node"></div>
+                  <div class="timeline-logo fallback">Freelance</div>
+                  <div>
+                    <span class="pill">Août 2024 — Mars 2025</span>
+                    <p class="experience-meta">Freelance · Remote</p>
+                  </div>
+                </div>
+                <h3>Consultant data &amp; automation</h3>
+                <ul>
+                  <li>Automatisation pour infopreneurs (tableaux de bord, process, acquisition).</li>
+                  <li>Démarchage et acquisition client en autonomie.</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <!-- Section Formation -->
+          <section class="panel formation" id="formation">
+            <div class="panel-header">
+              <p class="pill">Formation</p>
+              <h2>Un parcours orienté data engineering &amp; IA</h2>
+            </div>
+            <div class="timeline formation-timeline">
+              <div class="timeline-track" aria-hidden="true">
+                <div class="timeline-progress"></div>
+              </div>
+              <article class="timeline-card">
+                <div class="timeline-head">
+                  <div class="timeline-node"></div>
+                  <div class="timeline-logo">
+                    <img src="image/Logo_Efrei_2022.svg.png" alt="Logo EFREI Paris" loading="lazy" />
+                  </div>
+                  <div>
+                    <span class="pill">2025 — 2028</span>
+                    <p class="experience-meta">EFREI Paris · Panthéon-Assas</p>
+                  </div>
+                </div>
+                <h3>Diplôme d’ingénieur Big Data &amp; Machine Learning</h3>
+                <p>
+                  Machine Learning, Text Mining, statistiques appliquées, algorithmes distribués, programmation fonctionnelle, data structuring &amp; NoSQL,
+                  data visualisation &amp; apps, Cloud, DevOps &amp; MLOps.
+                </p>
+              </article>
+              <article class="timeline-card">
+                <div class="timeline-head">
+                  <div class="timeline-node"></div>
+                  <div class="timeline-logo">
+                    <img src="image/POITIERS-UNIVERSITE-CMJN-2014.png" alt="Logo IUT Poitiers" loading="lazy" />
+                  </div>
+                  <div>
+                    <span class="pill">2023 — 2025</span>
+                    <p class="experience-meta">IUT Poitiers · Niort</p>
+                  </div>
+                </div>
+                <h3>DUT Science des données — Mention bien</h3>
+                <p>Approche polyvalente mêlant statistiques, programmation (Python, R, SQL) et bases pour l'IA appliquée.</p>
+              </article>
+            </div>
+          </section>
+        </div>
+        <div class="timeline-dots" role="tablist" aria-label="Navigation timeline">
+          <button class="timeline-dot active" aria-label="Expérience"></button>
+          <button class="timeline-dot" aria-label="Formation"></button>
+        </div>
+      </div>
+
+      <!-- Section Projets : cartes vitrées pour la sélection -->
+      <section class="panel projects" id="projects">
+        <div class="panel-header">
+          <p class="pill">Sélection</p>
+          <h2>Projets qui respirent le futur</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-glow"></div>
+            <p class="pill">XR Banking</p>
+            <h3>Halo Finance</h3>
+            <p>Application bancaire volumétrique conçue pour VisionOS avec interactions gestuelles.</p>
+            <div class="tags">
+              <span>Spatial UI</span>
+              <span>Three.js</span>
+              <span>Accessibilité</span>
+            </div>
+            <button class="spark-btn ghost">Étude de cas</button>
+          </article>
+          <article class="project-card">
+            <div class="project-glow"></div>
+            <p class="pill">IA + Santé</p>
+            <h3>PulseCare</h3>
+            <p>Dashboard clinique avec insights IA en temps réel et alertes haptique-friendly.</p>
+            <div class="tags">
+              <span>React</span>
+              <span>IA éthique</span>
+              <span>DataViz</span>
+            </div>
+            <button class="spark-btn ghost">Étude de cas</button>
+          </article>
+          <article class="project-card">
+            <div class="project-glow"></div>
+            <p class="pill">Mobilité</p>
+            <h3>Orbit Ride</h3>
+            <p>Expérience compagnon pour véhicules autonomes inspirée des cabines iOS 17.</p>
+            <div class="tags">
+              <span>Motion</span>
+              <span>AR</span>
+              <span>Design Ops</span>
+            </div>
+            <button class="spark-btn ghost">Étude de cas</button>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer minimal : crédits + ancre vers le haut -->
+    <footer>
+      <p>© 2024 Marius Badoz – Alternance Data &amp; IA.</p>
+      <a href="#top" class="ghost-link">Retour en orbite ↑</a>
+    </footer>
+
+    <!-- Script d'interactions (thème, tilt, soumission formulaire...) -->
+    <script src="script.js"></script>
+  </body>
+</html>
