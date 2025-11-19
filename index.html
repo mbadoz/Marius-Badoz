@@ -23,7 +23,10 @@
           <li><a href="#formation">Formation</a></li>
           <li><a href="#projects">Projets</a></li>
         </ul>
-        <button class="spark-btn" id="themeToggle" aria-label="Changer de thème">Mode</button>
+        <button class="spark-btn theme-toggle" id="themeToggle" aria-label="Changer de thème">
+          <span class="theme-label">Mode nuit</span>
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+        </button>
       </nav>
       <div class="hero-wrapper">
         <div class="hero-text">
@@ -40,15 +43,24 @@
             <span class="pill muted">Basé à Paris · Handball N3</span>
           </div>
           <div class="hero-cta">
-            <a href="#experience" class="spark-btn primary">Voir mes expériences</a>
-            <a href="#projects" class="ghost-link">Dashboard Streamlit →</a>
+            <a href="image/CV_MB.pdf" class="spark-btn primary cv-btn" id="cvButton" target="_blank" rel="noopener">
+              <span>Voir mon CV</span>
+            </a>
+            <div class="hero-socials">
+              <a href="https://github.com/marius-badoz" class="icon-link github-link" aria-label="GitHub de Marius" target="_blank" rel="noopener">
+                <img class="github-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" />
+              </a>
+              <a href="https://www.linkedin.com/in/marius-badoz" class="icon-link linkedin-link" aria-label="LinkedIn de Marius" target="_blank" rel="noopener">
+                <img class="linkedin-icon" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="" />
+              </a>
+            </div>
           </div>
         </div>
         <div class="hero-photo" aria-label="Portrait de Marius Badoz">
           <div class="hero-bubble">
             <img src="image/photoDeProfil.jpg" alt="Portrait de Marius Badoz" />
           </div>
-          <p>Data craftsmanship · Cloud &amp; IA appliquée</p>
+          <!-- <p>Data craftsmanship · Cloud &amp; IA appliquée</p> -->
         </div>
       </div>
     </header>
@@ -56,12 +68,10 @@
     <main>
       <!-- Section Expérience : contenu issu du CV -->
       <div class="timeline-carousel" aria-live="polite">
-        <button class="timeline-arrow timeline-arrow--prev" type="button" aria-label="Voir la timeline précédente">‹</button>
         <div class="timeline-slider">
           <section class="panel experience timeline-slide" id="experience">
             <div class="panel-header">
               <p class="pill">Expérience</p>
-              <h2>Données sensibles, automatisation et produits augmentés</h2>
             </div>
             <div class="timeline experience-timeline">
               <div class="timeline-track" aria-hidden="true">
@@ -101,8 +111,8 @@
                 <ul>
                   <li>Automatisation des processus de pilotage et récupération de données (API, VBA, Python, SQL).</li>
                   <li>Conception d'applications décisionnelles pour plusieurs services sur QlikSense.</li>
-                  <li>Support aux projets de refonte (contacts, cadrage, cahier des charges).</li>
-                  <li>Campagne SMS marketing en HTML, CSS et JavaScript.</li>
+                  <li>Audit de l'existant et élaboration de projets de refonte (contexte, objectifs, cahier des charges).</li>
+                  <li>Développement d'une campagne SMS marketing en HTML, CSS et JavaScript.</li>
                 </ul>
               </article>
             <article class="timeline-card">
@@ -128,7 +138,6 @@
           <section class="panel formation timeline-slide" id="formation">
             <div class="panel-header">
               <p class="pill">Formation</p>
-              <h2>Un parcours orienté data engineering &amp; IA</h2>
             </div>
             <div class="timeline formation-timeline">
               <div class="timeline-track" aria-hidden="true">
@@ -170,7 +179,6 @@
             </div>
           </section>
         </div>
-        <button class="timeline-arrow timeline-arrow--next" type="button" aria-label="Voir la timeline suivante">›</button>
         <div class="timeline-dots" role="tablist" aria-label="Navigation timeline">
           <button class="timeline-dot active" aria-label="Expérience" data-slide="0"></button>
           <button class="timeline-dot" aria-label="Formation" data-slide="1"></button>

@@ -1,13 +1,14 @@
-// Sélections principales pour manipuler le DOM (thème, cartes, fond étoilé, etc.)
 const body = document.body;
 const themeToggle = document.getElementById("themeToggle");
+const themeLabel = themeToggle?.querySelector(".theme-label");
+const themeIcon = themeToggle?.querySelector(".theme-icon");
 const slider = document.querySelector(".timeline-slider");
 const sliderPanels = slider ? Array.from(slider.querySelectorAll(".timeline-slide")) : [];
 const sliderDots = document.querySelectorAll(".timeline-dot");
-const sliderPrev = document.querySelector(".timeline-arrow--prev");
-const sliderNext = document.querySelector(".timeline-arrow--next");
+const hero = document.querySelector(".hero");
+const cvButton = document.getElementById("cvButton");
 let currentSlide = 0;
-const cards = document.querySelectorAll(".panel, .project-card, .reveal");
+const cards = document.querySelectorAll(".panel, .project-card, .timeline-card");
 const stars = document.querySelector(".stars");
 const timelines = Array.from(document.querySelectorAll(".timeline"));
 const timelineGroups = timelines.map(timeline => {
@@ -20,28 +21,27 @@ const timelineGroups = timelines.map(timeline => {
   };
 });
 
-// Préférences système + stockage local pour charger la bonne variante dès l'arrivée
 const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
 const storedTheme = localStorage.getItem("theme");
 if (storedTheme === "light" || (!storedTheme && prefersLight)) {
   body.classList.add("light");
 }
 
-// Met à jour le libellé du bouton selon l'état actuel
 const updateThemeLabel = () => {
-  themeToggle.textContent = body.classList.contains("light") ? "Mode nuit" : "Mode jour";
+  if (!themeToggle) return;
+  const isLight = body.classList.contains("light");
+  if (themeLabel) themeLabel.textContent = isLight ? "Mode nuit" : "Mode jour";
+  if (themeIcon) themeIcon.textContent = isLight ? "🌙" : "☀️";
 };
 
 updateThemeLabel();
 
-// Inversion du thème avec mémorisation de la préférence
-themeToggle.addEventListener("click", () => {
+themeToggle?.addEventListener("click", () => {
   body.classList.toggle("light");
   localStorage.setItem("theme", body.classList.contains("light") ? "light" : "dark");
   updateThemeLabel();
 });
 
-// Observer pour déclencher l'animation d'apparition des cartes quand elles entrent dans le viewport
 const observer = new IntersectionObserver(
   entries => {
     entries.forEach(entry => {
@@ -53,9 +53,21 @@ const observer = new IntersectionObserver(
   { threshold: 0.15 }
 );
 
-cards.forEach(card => {
-  observer.observe(card);
-});
+cards.forEach(card => observer.observe(card));
+
+if (hero) {
+  const heroObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        const floating = !entry.isIntersecting;
+        body.classList.toggle("cv-floating", floating);
+        body.classList.toggle("theme-floating", floating);
+      });
+    },
+    { threshold: 0.2 }
+  );
+  heroObserver.observe(hero);
+}
 
 const updateTimelineProgress = (timeline, card) => {
   if (!timeline) return;
@@ -100,9 +112,7 @@ const chooseActiveCard = group => {
 
 const refreshTimelines = () => {
   timelineGroups.forEach(group => {
-    if (group.slideIndex !== -1 && group.slideIndex !== currentSlide) {
-      return;
-    }
+    if (group.slideIndex !== -1 && group.slideIndex !== currentSlide) return;
     chooseActiveCard(group);
   });
 };
@@ -127,39 +137,27 @@ if (slider && sliderDots.length === sliderPanels.length) {
   sliderDots.forEach((dot, index) => {
     dot.addEventListener("click", () => goToSlide(index));
   });
-}
 
-sliderPrev?.addEventListener("click", () => goToSlide(currentSlide - 1));
-sliderNext?.addEventListener("click", () => goToSlide(currentSlide + 1));
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const swipeThreshold = 50;
 
-let touchStartX = 0;
-let touchEndX = 0;
-const swipeThreshold = 50;
+  slider.addEventListener("touchstart", event => {
+    touchStartX = event.changedTouches[0].clientX;
+  });
 
-const handleSwipe = () => {
-  const diff = touchStartX - touchEndX;
-  if (Math.abs(diff) < swipeThreshold) return;
-  if (diff > 0) {
-    goToSlide(currentSlide + 1);
-  } else {
-    goToSlide(currentSlide - 1);
-  }
-};
+  slider.addEventListener("touchend", event => {
+    touchEndX = event.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) goToSlide(currentSlide + 1);
+      else goToSlide(currentSlide - 1);
+    }
+  });
 
-slider?.addEventListener("touchstart", event => {
-  touchStartX = event.changedTouches[0].clientX;
-});
-
-slider?.addEventListener("touchend", event => {
-  touchEndX = event.changedTouches[0].clientX;
-  handleSwipe();
-});
-
-if (slider && sliderPanels.length) {
   goToSlide(0);
 }
 
-// Effet parallax / tilt en fonction de la position du pointeur + déplacement de la couche d'étoiles
 window.addEventListener("pointermove", e => {
   const { innerWidth, innerHeight } = window;
   const tiltStrength = 5;
