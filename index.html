@@ -56,8 +56,9 @@
     <main>
       <!-- Section Expérience : contenu issu du CV -->
       <div class="timeline-carousel" aria-live="polite">
-        <div class="timeline-slides">
-          <section class="panel experience" id="experience">
+        <button class="timeline-arrow timeline-arrow--prev" type="button" aria-label="Voir la timeline précédente">‹</button>
+        <div class="timeline-slider">
+          <section class="panel experience timeline-slide" id="experience">
             <div class="panel-header">
               <p class="pill">Expérience</p>
               <h2>Données sensibles, automatisation et produits augmentés</h2>
@@ -66,12 +67,13 @@
               <div class="timeline-track" aria-hidden="true">
                 <div class="timeline-progress"></div>
               </div>
-              <article class="timeline-card">
-                <div class="timeline-head">
-                  <div class="timeline-node"></div>
-                  <div class="timeline-logo">
-                    <img src="image/logo_grouapama_support_services.png" alt="Logo Groupama Supports et Services" loading="lazy" />
-                  </div>
+            <article class="timeline-card">
+              <span class="timeline-point" aria-hidden="true"></span>
+              <div class="timeline-head">
+                <div class="timeline-node"></div>
+                <div class="timeline-logo">
+                  <img src="image/logo_grouapama_support_services.png" alt="Logo Groupama Supports et Services" loading="lazy" />
+                </div>
                   <div>
                     <span class="pill">Août 2025 — Aujourd’hui</span>
                     <p class="experience-meta">Groupama Supports et Services · Paris</p>
@@ -83,12 +85,13 @@
                   <li>Gestion de l'infocentre des flux financiers de Groupama Épargne Salariale.</li>
                 </ul>
               </article>
-              <article class="timeline-card">
-                <div class="timeline-head">
-                  <div class="timeline-node"></div>
-                  <div class="timeline-logo">
-                    <img src="image/Logo-Groupama-2025.webp" alt="Logo Groupama Centre Atlantique" loading="lazy" />
-                  </div>
+            <article class="timeline-card">
+              <span class="timeline-point" aria-hidden="true"></span>
+              <div class="timeline-head">
+                <div class="timeline-node"></div>
+                <div class="timeline-logo">
+                  <img src="image/Logo-Groupama-2025.webp" alt="Logo Groupama Centre Atlantique" loading="lazy" />
+                </div>
                   <div>
                     <span class="pill">Août 2024 — Août 2025</span>
                     <p class="experience-meta">Groupama Centre Atlantique · Niort</p>
@@ -102,12 +105,13 @@
                   <li>Campagne SMS marketing en HTML, CSS et JavaScript.</li>
                 </ul>
               </article>
-              <article class="timeline-card">
-                <div class="timeline-head">
-                  <div class="timeline-node"></div>
-                  <div class="timeline-logo fallback">Freelance</div>
-                  <div>
-                    <span class="pill">Août 2024 — Mars 2025</span>
+            <article class="timeline-card">
+              <span class="timeline-point" aria-hidden="true"></span>
+              <div class="timeline-head">
+                <div class="timeline-node"></div>
+                <div class="timeline-logo fallback">Freelance</div>
+                <div>
+                  <span class="pill">Août 2024 — Mars 2025</span>
                     <p class="experience-meta">Freelance · Remote</p>
                   </div>
                 </div>
@@ -121,7 +125,7 @@
           </section>
 
           <!-- Section Formation -->
-          <section class="panel formation" id="formation">
+          <section class="panel formation timeline-slide" id="formation">
             <div class="panel-header">
               <p class="pill">Formation</p>
               <h2>Un parcours orienté data engineering &amp; IA</h2>
@@ -130,12 +134,13 @@
               <div class="timeline-track" aria-hidden="true">
                 <div class="timeline-progress"></div>
               </div>
-              <article class="timeline-card">
-                <div class="timeline-head">
-                  <div class="timeline-node"></div>
-                  <div class="timeline-logo">
-                    <img src="image/Logo_Efrei_2022.svg.png" alt="Logo EFREI Paris" loading="lazy" />
-                  </div>
+            <article class="timeline-card">
+              <span class="timeline-point" aria-hidden="true"></span>
+              <div class="timeline-head">
+                <div class="timeline-node"></div>
+                <div class="timeline-logo">
+                  <img src="image/Logo_Efrei_2022.svg.png" alt="Logo EFREI Paris" loading="lazy" />
+                </div>
                   <div>
                     <span class="pill">2025 — 2028</span>
                     <p class="experience-meta">EFREI Paris · Panthéon-Assas</p>
@@ -147,12 +152,13 @@
                   data visualisation &amp; apps, Cloud, DevOps &amp; MLOps.
                 </p>
               </article>
-              <article class="timeline-card">
-                <div class="timeline-head">
-                  <div class="timeline-node"></div>
-                  <div class="timeline-logo">
-                    <img src="image/POITIERS-UNIVERSITE-CMJN-2014.png" alt="Logo IUT Poitiers" loading="lazy" />
-                  </div>
+            <article class="timeline-card">
+              <span class="timeline-point" aria-hidden="true"></span>
+              <div class="timeline-head">
+                <div class="timeline-node"></div>
+                <div class="timeline-logo">
+                  <img src="image/POITIERS-UNIVERSITE-CMJN-2014.png" alt="Logo IUT Poitiers" loading="lazy" />
+                </div>
                   <div>
                     <span class="pill">2023 — 2025</span>
                     <p class="experience-meta">IUT Poitiers · Niort</p>
@@ -164,9 +170,10 @@
             </div>
           </section>
         </div>
+        <button class="timeline-arrow timeline-arrow--next" type="button" aria-label="Voir la timeline suivante">›</button>
         <div class="timeline-dots" role="tablist" aria-label="Navigation timeline">
-          <button class="timeline-dot active" aria-label="Expérience"></button>
-          <button class="timeline-dot" aria-label="Formation"></button>
+          <button class="timeline-dot active" aria-label="Expérience" data-slide="0"></button>
+          <button class="timeline-dot" aria-label="Formation" data-slide="1"></button>
         </div>
       </div>
 

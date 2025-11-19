@@ -264,6 +264,23 @@ main {
   transition: opacity 0.6s ease, translate 0.6s ease;
 }
 
+.timeline-slide.panel {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.timeline-slide .panel-header {
+  padding: 0 clamp(4px, 2vw, 16px);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timeline-slide .panel-header h2 {
+  margin-bottom: 0;
+}
+
 .panel-header h2 {
   font-size: clamp(1.8rem, 3vw, 2.8rem);
   margin-top: 12px;
@@ -294,20 +311,27 @@ main {
 
 /* Timeline futuriste (expérience + formation) */
 .timeline {
+  --track-width: 5px;
+  --track-left: clamp(24px, 6vw, 50px);
+  --card-gap: clamp(60px, 8vw, 120px);
   position: relative;
   margin-top: 36px;
-  padding-left: 90px;
+  padding-left: calc(var(--track-left) + var(--card-gap));
+  padding-right: clamp(18px, 5vw, 50px);
   display: flex;
   flex-direction: column;
   gap: 30px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .timeline-track {
   position: absolute;
-  left: 30px;
+  left: var(--track-left);
   top: 0;
   bottom: 0;
-  width: 2px;
+  width: var(--track-width);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(102, 231, 254, 0.9), rgba(192, 91, 255, 0));
   box-shadow: 0 0 25px rgba(102, 231, 254, 0.4);
   overflow: hidden;
@@ -409,19 +433,20 @@ main {
 
 .timeline-node {
   position: absolute;
-  left: -60px;
+  left: calc(-1 * var(--card-gap) + var(--track-width) / 2);
   top: 36px;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: 2px solid rgba(102, 231, 254, 0.8);
   box-shadow: 0 0 20px rgba(102, 231, 254, 0.7);
   animation: pulse-node 3s ease-in-out infinite;
+  transform: translate(-50%, 0);
 }
 
 .timeline-card.active .timeline-node {
   box-shadow: 0 0 25px rgba(102, 231, 254, 0.9), 0 0 40px rgba(102, 231, 254, 0.5);
-  transform: scale(1.2);
+  transform: translate(-50%, 0) scale(1.2);
 }
 
 .formation-timeline .timeline-node {
@@ -431,6 +456,7 @@ main {
 
 .formation-timeline .timeline-card.active .timeline-node {
   box-shadow: 0 0 25px rgba(255, 142, 244, 0.9), 0 0 40px rgba(255, 142, 244, 0.5);
+  transform: translate(-50%, 0) scale(1.2);
 }
 
 @keyframes pulse-node {
@@ -611,26 +637,11 @@ footer {
   }
 
   .timeline-carousel {
-    gap: 20px;
+    gap: 16px;
   }
 
-  .timeline-slides {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 0;
-    scroll-behavior: smooth;
-    padding-bottom: 8px;
-  }
-
-  .timeline-slides > .panel {
-    min-width: 100%;
-    flex: 0 0 100%;
-    scroll-snap-align: center;
-  }
-
-  .timeline-dots {
-    display: flex;
+  .timeline-arrow {
+    display: none;
   }
 
   .timeline-card {
@@ -653,15 +664,19 @@ footer {
   }
 
   .timeline {
-    padding-left: 50px;
+    --track-left: clamp(16px, 12vw, 26px);
+    --card-gap: clamp(36px, 18vw, 80px);
+    padding-left: calc(var(--track-left) + var(--card-gap));
+    padding-right: clamp(12px, 8vw, 32px);
   }
 
   .timeline-track {
-    left: 18px;
+    left: var(--track-left);
   }
 
-  .timeline-card .timeline-node {
-    left: -38px;
+  .timeline-card .timeline-node,
+  .timeline-point {
+    left: calc(-1 * var(--card-gap) + var(--track-width) / 2);
   }
 
   footer {
@@ -670,33 +685,129 @@ footer {
   }
 }
 .timeline-carousel {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 28px;
+  overflow: hidden;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
-.timeline-slides {
+.timeline-slider {
+  display: flex;
+  width: 100%;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  min-height: 1080px;
+}
+
+.timeline-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0 clamp(16px, 6vw, 70px) clamp(10px, 3vw, 30px);
+  box-sizing: border-box;
+}
+
+.timeline-arrow {
+  position: absolute;
+  top: 52%;
+  transform: translateY(-52%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(5, 5, 16, 0.5);
+  color: #fff;
+  font-size: 1.4rem;
   display: grid;
-  gap: 50px;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  z-index: 2;
+}
+
+.timeline-arrow:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.timeline-arrow--prev {
+  left: 10px;
+}
+
+.timeline-arrow--next {
+  right: 10px;
 }
 
 .timeline-dots {
-  display: none;
+  display: flex;
   justify-content: center;
   gap: 10px;
+  max-width: 900px;
+  margin: 10px auto 0;
+  padding: 12px clamp(16px, 6vw, 70px) 20px;
 }
 
 .timeline-dot {
-  width: 10px;
-  height: 10px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
   cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.timeline-dot.active {
-  background: #fff;
+.timeline-dot[data-slide="0"] {
+  border-color: rgba(102, 231, 254, 0.6);
+}
+
+.timeline-dot[data-slide="1"] {
+  border-color: rgba(255, 142, 244, 0.6);
+}
+
+.timeline-dot.active[data-slide="0"] {
+  background: rgba(102, 231, 254, 0.9);
+  box-shadow: 0 0 15px rgba(102, 231, 254, 0.6);
   transform: scale(1.2);
+}
+
+.timeline-dot.active[data-slide="1"] {
+  background: rgba(255, 142, 244, 0.9);
+  box-shadow: 0 0 15px rgba(255, 142, 244, 0.55);
+  transform: scale(1.2);
+}
+.timeline-point {
+  position: absolute;
+  left: calc(-1 * var(--card-gap) + var(--track-width) / 2);
+  top: 90px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(102, 231, 254, 0.8);
+  background: rgba(5, 8, 20, 0.85);
+  box-shadow: 0 0 12px rgba(102, 231, 254, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  transform: translate(-50%, -50%);
+}
+
+.timeline-card.active .timeline-point {
+  transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0 0 20px rgba(102, 231, 254, 0.65);
+}
+
+.formation-timeline .timeline-point {
+  border-color: rgba(255, 142, 244, 0.9);
+  box-shadow: 0 0 12px rgba(255, 142, 244, 0.45);
+}
+
+.formation-timeline .timeline-card.active .timeline-point {
+  box-shadow: 0 0 20px rgba(255, 142, 244, 0.7);
 }
