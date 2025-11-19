@@ -55,127 +55,90 @@
 
     <main>
       <!-- Section Expérience : contenu issu du CV -->
-      <div class="timeline-carousel" aria-live="polite">
-        <button class="timeline-arrow timeline-arrow--prev" type="button" aria-label="Voir la timeline précédente">‹</button>
-        <div class="timeline-slider">
-          <section class="panel experience timeline-slide" id="experience">
-            <div class="panel-header">
-              <p class="pill">Expérience</p>
-              <h2>Données sensibles, automatisation et produits augmentés</h2>
-            </div>
-            <div class="timeline experience-timeline">
-              <div class="timeline-track" aria-hidden="true">
-                <div class="timeline-progress"></div>
+      <section class="panel timeline-duo" id="parcours">
+        <div class="panel-header">
+          <p class="pill">Trajectoire</p>
+          <h2>Une ligne centrale pour connecter expériences et formations.</h2>
+        </div>
+        <div class="timeline-duo-grid">
+          <div class="timeline-column timeline-column--left">
+            <p class="timeline-column-title">Expérience</p>
+            <article class="timeline-card timeline-card--left" data-order="2025">
+              <div class="timeline-logo">
+                <img src="image/logo_grouapama_support_services.png" alt="Logo Groupama Supports et Services" loading="lazy" />
               </div>
-            <article class="timeline-card">
-              <span class="timeline-point" aria-hidden="true"></span>
-              <div class="timeline-head">
-                <div class="timeline-node"></div>
-                <div class="timeline-logo">
-                  <img src="image/logo_grouapama_support_services.png" alt="Logo Groupama Supports et Services" loading="lazy" />
-                </div>
-                  <div>
-                    <span class="pill">Août 2025 — Aujourd’hui</span>
-                    <p class="experience-meta">Groupama Supports et Services · Paris</p>
-                  </div>
-                </div>
-                <h3>Ingénieur data apprenti</h3>
-                <ul>
-                  <li>Optimisation des traitements sur de gros volumes de données financières confidentielles.</li>
-                  <li>Gestion de l'infocentre des flux financiers de Groupama Épargne Salariale.</li>
-                </ul>
-              </article>
-            <article class="timeline-card">
-              <span class="timeline-point" aria-hidden="true"></span>
-              <div class="timeline-head">
-                <div class="timeline-node"></div>
-                <div class="timeline-logo">
-                  <img src="image/Logo-Groupama-2025.webp" alt="Logo Groupama Centre Atlantique" loading="lazy" />
-                </div>
-                  <div>
-                    <span class="pill">Août 2024 — Août 2025</span>
-                    <p class="experience-meta">Groupama Centre Atlantique · Niort</p>
-                  </div>
-                </div>
-                <h3>Technicien pilotage &amp; organisation</h3>
-                <ul>
-                  <li>Automatisation des processus de pilotage et récupération de données (API, VBA, Python, SQL).</li>
-                  <li>Conception d'applications décisionnelles pour plusieurs services sur QlikSense.</li>
-                  <li>Support aux projets de refonte (contacts, cadrage, cahier des charges).</li>
-                  <li>Campagne SMS marketing en HTML, CSS et JavaScript.</li>
-                </ul>
-              </article>
-            <article class="timeline-card">
-              <span class="timeline-point" aria-hidden="true"></span>
-              <div class="timeline-head">
-                <div class="timeline-node"></div>
-                <div class="timeline-logo fallback">Freelance</div>
-                <div>
-                  <span class="pill">Août 2024 — Mars 2025</span>
-                    <p class="experience-meta">Freelance · Remote</p>
-                  </div>
-                </div>
-                <h3>Consultant data &amp; automation</h3>
-                <ul>
-                  <li>Automatisation pour infopreneurs (tableaux de bord, process, acquisition).</li>
-                  <li>Démarchage et acquisition client en autonomie.</li>
-                </ul>
-              </article>
-            </div>
-          </section>
+              <div class="timeline-card-meta">
+                <span class="pill">Août 2025 — Aujourd’hui</span>
+                <p class="experience-meta">Groupama Supports et Services · Paris</p>
+              </div>
+              <h3>Ingénieur data apprenti</h3>
+              <ul>
+                <li>Optimisation des traitements sur de gros volumes de données financières confidentielles.</li>
+                <li>Gestion de l'infocentre des flux financiers de Groupama Épargne Salariale.</li>
+              </ul>
+            </article>
+            <article class="timeline-card timeline-card--left" data-order="2024-2">
+              <div class="timeline-logo">
+                <img src="image/Logo-Groupama-2025.webp" alt="Logo Groupama Centre Atlantique" loading="lazy" />
+              </div>
+              <div class="timeline-card-meta">
+                <span class="pill">Août 2024 — Août 2025</span>
+                <p class="experience-meta">Groupama Centre Atlantique · Niort</p>
+              </div>
+              <h3>Technicien pilotage &amp; organisation</h3>
+              <ul>
+                <li>Automatisation des processus de pilotage et récupération de données (API, VBA, Python, SQL).</li>
+                <li>Conception d'applications décisionnelles pour plusieurs services sur QlikSense.</li>
+                <li>Support aux projets de refonte (contacts, cadrage, cahier des charges).</li>
+                <li>Campagne SMS marketing en HTML, CSS et JavaScript.</li>
+              </ul>
+            </article>
+            <article class="timeline-card timeline-card--left" data-order="2024-1">
+              <div class="timeline-logo fallback">Freelance</div>
+              <div class="timeline-card-meta">
+                <span class="pill">Août 2024 — Mars 2025</span>
+                <p class="experience-meta">Freelance · Remote</p>
+              </div>
+              <h3>Consultant data &amp; automation</h3>
+              <ul>
+                <li>Automatisation pour infopreneurs (tableaux de bord, process, acquisition).</li>
+                <li>Démarchage et acquisition client en autonomie.</li>
+              </ul>
+            </article>
+          </div>
 
-          <!-- Section Formation -->
-          <section class="panel formation timeline-slide" id="formation">
-            <div class="panel-header">
-              <p class="pill">Formation</p>
-              <h2>Un parcours orienté data engineering &amp; IA</h2>
-            </div>
-            <div class="timeline formation-timeline">
-              <div class="timeline-track" aria-hidden="true">
-                <div class="timeline-progress"></div>
+          <div class="timeline-line" aria-hidden="true"></div>
+
+          <div class="timeline-column timeline-column--right">
+            <p class="timeline-column-title">Formation</p>
+            <article class="timeline-card timeline-card--right" data-order="2028">
+              <div class="timeline-logo">
+                <img src="image/Logo_Efrei_2022.svg.png" alt="Logo EFREI Paris" loading="lazy" />
               </div>
-            <article class="timeline-card">
-              <span class="timeline-point" aria-hidden="true"></span>
-              <div class="timeline-head">
-                <div class="timeline-node"></div>
-                <div class="timeline-logo">
-                  <img src="image/Logo_Efrei_2022.svg.png" alt="Logo EFREI Paris" loading="lazy" />
-                </div>
-                  <div>
-                    <span class="pill">2025 — 2028</span>
-                    <p class="experience-meta">EFREI Paris · Panthéon-Assas</p>
-                  </div>
-                </div>
-                <h3>Diplôme d’ingénieur Big Data &amp; Machine Learning</h3>
-                <p>
-                  Machine Learning, Text Mining, statistiques appliquées, algorithmes distribués, programmation fonctionnelle, data structuring &amp; NoSQL,
-                  data visualisation &amp; apps, Cloud, DevOps &amp; MLOps.
-                </p>
-              </article>
-            <article class="timeline-card">
-              <span class="timeline-point" aria-hidden="true"></span>
-              <div class="timeline-head">
-                <div class="timeline-node"></div>
-                <div class="timeline-logo">
-                  <img src="image/POITIERS-UNIVERSITE-CMJN-2014.png" alt="Logo IUT Poitiers" loading="lazy" />
-                </div>
-                  <div>
-                    <span class="pill">2023 — 2025</span>
-                    <p class="experience-meta">IUT Poitiers · Niort</p>
-                  </div>
-                </div>
-                <h3>DUT Science des données — Mention bien</h3>
-                <p>Approche polyvalente mêlant statistiques, programmation (Python, R, SQL) et bases pour l'IA appliquée.</p>
-              </article>
-            </div>
-          </section>
+              <div class="timeline-card-meta">
+                <span class="pill">2025 — 2028</span>
+                <p class="experience-meta">EFREI Paris · Panthéon-Assas</p>
+              </div>
+              <h3>Diplôme d’ingénieur Big Data &amp; Machine Learning</h3>
+              <p>
+                Machine Learning, Text Mining, statistiques appliquées, algorithmes distribués, programmation fonctionnelle, data structuring &amp; NoSQL,
+                data visualisation &amp; apps, Cloud, DevOps &amp; MLOps.
+              </p>
+            </article>
+            <article class="timeline-card timeline-card--right" data-order="2025">
+              <div class="timeline-logo">
+                <img src="image/POITIERS-UNIVERSITE-CMJN-2014.png" alt="Logo IUT Poitiers" loading="lazy" />
+              </div>
+              <div class="timeline-card-meta">
+                <span class="pill">2023 — 2025</span>
+                <p class="experience-meta">IUT Poitiers · Niort</p>
+              </div>
+              <h3>DUT Science des données — Mention bien</h3>
+              <p>Approche polyvalente mêlant statistiques, programmation (Python, R, SQL) et bases pour l'IA appliquée.</p>
+            </article>
+          </div>
         </div>
-        <button class="timeline-arrow timeline-arrow--next" type="button" aria-label="Voir la timeline suivante">›</button>
-        <div class="timeline-dots" role="tablist" aria-label="Navigation timeline">
-          <button class="timeline-dot active" aria-label="Expérience" data-slide="0"></button>
-          <button class="timeline-dot" aria-label="Formation" data-slide="1"></button>
-        </div>
-      </div>
+      </section>
 
       <!-- Section Projets : cartes vitrées pour la sélection -->
       <section class="panel projects" id="projects">

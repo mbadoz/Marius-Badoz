@@ -1,24 +1,8 @@
 // Sélections principales pour manipuler le DOM (thème, cartes, fond étoilé, etc.)
 const body = document.body;
 const themeToggle = document.getElementById("themeToggle");
-const slider = document.querySelector(".timeline-slider");
-const sliderPanels = slider ? Array.from(slider.querySelectorAll(".timeline-slide")) : [];
-const sliderDots = document.querySelectorAll(".timeline-dot");
-const sliderPrev = document.querySelector(".timeline-arrow--prev");
-const sliderNext = document.querySelector(".timeline-arrow--next");
-let currentSlide = 0;
-const cards = document.querySelectorAll(".panel, .project-card, .reveal");
+const cards = document.querySelectorAll(".panel, .project-card, .timeline-card");
 const stars = document.querySelector(".stars");
-const timelines = Array.from(document.querySelectorAll(".timeline"));
-const timelineGroups = timelines.map(timeline => {
-  const slideIndex = sliderPanels.findIndex(panel => panel.contains(timeline));
-  return {
-    timeline,
-    cards: Array.from(timeline.querySelectorAll(".timeline-card")),
-    active: null,
-    slideIndex,
-  };
-});
 
 // Préférences système + stockage local pour charger la bonne variante dès l'arrivée
 const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
@@ -57,107 +41,6 @@ cards.forEach(card => {
   observer.observe(card);
 });
 
-const updateTimelineProgress = (timeline, card) => {
-  if (!timeline) return;
-  const progress = timeline.querySelector(".timeline-progress");
-  if (!progress) return;
-  if (!card) {
-    progress.style.height = "0px";
-    return;
-  }
-  const offset = card.offsetTop + card.offsetHeight * 0.5;
-  progress.style.height = `${offset}px`;
-};
-
-const setActiveTimelineCard = (group, card) => {
-  if (!card || group.active === card) return;
-  group.cards.forEach(c => c.classList.toggle("active", c === card));
-  group.active = card;
-  updateTimelineProgress(group.timeline, card);
-};
-
-const chooseActiveCard = group => {
-  if (!group.cards.length) return;
-  const viewportCenter = window.innerHeight / 2;
-  let candidate = null;
-  let bestScore = Infinity;
-  group.cards.forEach(card => {
-    const rect = card.getBoundingClientRect();
-    const inView = rect.bottom > 0 && rect.top < window.innerHeight;
-    const cardCenter = rect.top + rect.height / 2;
-    const distance = Math.abs(viewportCenter - cardCenter);
-    if (inView && distance < bestScore) {
-      bestScore = distance;
-      candidate = card;
-    }
-  });
-  if (!candidate) {
-    const timelineRect = group.timeline.getBoundingClientRect();
-    candidate = timelineRect.top > viewportCenter ? group.cards[0] : group.cards[group.cards.length - 1];
-  }
-  setActiveTimelineCard(group, candidate);
-};
-
-const refreshTimelines = () => {
-  timelineGroups.forEach(group => {
-    if (group.slideIndex !== -1 && group.slideIndex !== currentSlide) {
-      return;
-    }
-    chooseActiveCard(group);
-  });
-};
-
-refreshTimelines();
-window.addEventListener("scroll", refreshTimelines);
-window.addEventListener("resize", refreshTimelines);
-
-const updateSliderDots = index => {
-  sliderDots.forEach((dot, i) => dot.classList.toggle("active", i === index));
-};
-
-const goToSlide = index => {
-  if (!slider || !sliderPanels.length) return;
-  currentSlide = (index + sliderPanels.length) % sliderPanels.length;
-  slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-  updateSliderDots(currentSlide);
-  refreshTimelines();
-};
-
-if (slider && sliderDots.length === sliderPanels.length) {
-  sliderDots.forEach((dot, index) => {
-    dot.addEventListener("click", () => goToSlide(index));
-  });
-}
-
-sliderPrev?.addEventListener("click", () => goToSlide(currentSlide - 1));
-sliderNext?.addEventListener("click", () => goToSlide(currentSlide + 1));
-
-let touchStartX = 0;
-let touchEndX = 0;
-const swipeThreshold = 50;
-
-const handleSwipe = () => {
-  const diff = touchStartX - touchEndX;
-  if (Math.abs(diff) < swipeThreshold) return;
-  if (diff > 0) {
-    goToSlide(currentSlide + 1);
-  } else {
-    goToSlide(currentSlide - 1);
-  }
-};
-
-slider?.addEventListener("touchstart", event => {
-  touchStartX = event.changedTouches[0].clientX;
-});
-
-slider?.addEventListener("touchend", event => {
-  touchEndX = event.changedTouches[0].clientX;
-  handleSwipe();
-});
-
-if (slider && sliderPanels.length) {
-  goToSlide(0);
-}
 
 // Effet parallax / tilt en fonction de la position du pointeur + déplacement de la couche d'étoiles
 window.addEventListener("pointermove", e => {
