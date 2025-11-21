@@ -1,7 +1,8 @@
 const body = document.body;
 const themeToggle = document.getElementById("themeToggle");
 const themeLabel = themeToggle?.querySelector(".theme-label");
-const themeIcon = themeToggle?.querySelector(".theme-icon");
+const floatingThemeToggle = document.getElementById("floatingThemeToggle");
+const floatingIcon = floatingThemeToggle?.querySelector(".floating-icon");
 const slider = document.querySelector(".timeline-slider");
 const sliderPanels = slider ? Array.from(slider.querySelectorAll(".timeline-slide")) : [];
 const sliderDots = document.querySelectorAll(".timeline-dot");
@@ -28,19 +29,25 @@ if (storedTheme === "light" || (!storedTheme && prefersLight)) {
 }
 
 const updateThemeLabel = () => {
-  if (!themeToggle) return;
   const isLight = body.classList.contains("light");
   if (themeLabel) themeLabel.textContent = isLight ? "Mode nuit" : "Mode jour";
-  if (themeIcon) themeIcon.textContent = isLight ? "🌙" : "☀️";
+  if (floatingIcon) {
+    const moonSrc = floatingIcon.dataset.moon;
+    const sunSrc = floatingIcon.dataset.sun;
+    floatingIcon.src = isLight ? moonSrc : sunSrc;
+  }
 };
 
 updateThemeLabel();
 
-themeToggle?.addEventListener("click", () => {
+const toggleTheme = () => {
   body.classList.toggle("light");
   localStorage.setItem("theme", body.classList.contains("light") ? "light" : "dark");
   updateThemeLabel();
-});
+};
+
+themeToggle?.addEventListener("click", toggleTheme);
+floatingThemeToggle?.addEventListener("click", toggleTheme);
 
 const observer = new IntersectionObserver(
   entries => {
