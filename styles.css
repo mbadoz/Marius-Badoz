@@ -285,7 +285,7 @@ body.light .icon-link {
 
 .cv-btn::after,
 .cv-btn::before {
-  content: "✦";
+  content: "cv";
   position: absolute;
   inset: 0;
   display: grid;
@@ -305,10 +305,10 @@ body.light .icon-link {
 
 body.cv-floating .cv-btn {
   position: fixed;
-  top: 90px;
+  top: 65px;
   left: 18px;
-  width: 70px;
-  height: 70px;
+  width: 49px;
+  height: 49px;
   border-radius: 999px;
   padding: 0;
   z-index: 20;
@@ -330,8 +330,8 @@ body.cv-floating .cv-btn::before {
   position: fixed;
   top: 10px;
   left: 18px;
-  width: 64px;
-  height: 64px;
+  width: 49px;
+  height: 49px;
   border-radius: 50%;
   border: none;
   background: rgba(255, 255, 255, 0.12);
