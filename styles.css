@@ -354,6 +354,20 @@ body.cv-floating .cv-btn::before {
   object-fit: contain;
 }
 
+@media (max-width: 600px) {
+  .floating-theme-toggle {
+    width: 52px;
+    height: 52px;
+    bottom: 18px;
+    right: 18px;
+  }
+
+  .floating-theme-toggle .floating-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
 body.theme-floating .floating-theme-toggle {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
