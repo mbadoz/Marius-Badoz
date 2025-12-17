@@ -2113,3 +2113,697 @@ footer {
 .formation-timeline .timeline-card.active .timeline-point {
   box-shadow: 0 0 16px rgba(160, 230, 200, 0.5);
 }
+
+/* ================================================
+   RESPONSIVE COMPLET - PETITS ÉCRANS
+   ================================================ */
+
+/* Tablettes et petits laptops */
+@media (max-width: 900px) {
+  .hero-wrapper {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .hero-photo {
+    order: -1;
+  }
+
+  .hero-text {
+    align-items: center;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(2rem, 6vw, 2.8rem);
+  }
+
+  .hero-text h2 {
+    font-size: clamp(1rem, 3vw, 1.4rem);
+  }
+
+  .lead {
+    text-align: center;
+    max-width: 50ch;
+  }
+
+  .hero-cta {
+    justify-content: center;
+  }
+
+  .hero-contact {
+    justify-content: center;
+  }
+
+  .hero-contact .pill {
+    margin-left: 0;
+  }
+
+  .hero-bubble {
+    width: clamp(180px, 40vw, 260px);
+  }
+
+  /* Parcours header */
+  .parcours-header h2 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+  }
+
+  .parcours-subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Mobiles (tablettes portrait et grands phones) */
+@media (max-width: 768px) {
+  /* Hero section mobile refinements */
+  .hero {
+    margin-bottom: 50px;
+  }
+
+  .hero-single {
+    margin-bottom: 60px;
+  }
+
+  .hero-text {
+    gap: 14px;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+  }
+
+  .hero-text h2 {
+    font-size: clamp(0.95rem, 3.5vw, 1.2rem);
+  }
+
+  .lead {
+    font-size: 0.95rem;
+  }
+
+  .hero-bubble {
+    width: clamp(160px, 45vw, 220px);
+  }
+
+  .hero-cta {
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .hero-socials {
+    gap: 10px;
+  }
+
+  .icon-link {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+  }
+
+  .icon-link img {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Pills et boutons */
+  .pill {
+    padding: 6px 14px;
+    font-size: 0.75rem;
+  }
+
+  .spark-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .spark-btn.primary {
+    padding: 11px 22px;
+  }
+
+  /* Panel sections */
+  .panel {
+    padding: clamp(20px, 4vw, 36px);
+  }
+
+  .panel-header h2 {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+  }
+
+  /* Parcours section */
+  .parcours-section {
+    padding: clamp(30px, 6vw, 50px) 0;
+  }
+
+  .parcours-header {
+    margin-bottom: clamp(28px, 5vw, 40px);
+  }
+
+  /* Bento cards mobile */
+  .bento-card {
+    padding: 20px 22px;
+  }
+
+  .bento-header {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .bento-logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .bento-title {
+    font-size: 1.1rem;
+  }
+
+  .bento-date {
+    font-size: 0.8rem;
+  }
+
+  .bento-location {
+    font-size: 0.75rem;
+  }
+
+  .bento-company {
+    font-size: 0.88rem;
+    margin-bottom: 12px;
+  }
+
+  .bento-list li {
+    font-size: 0.82rem;
+    padding-left: 16px;
+    margin-bottom: 8px;
+  }
+
+  .bento-tags {
+    gap: 6px;
+  }
+
+  .bento-tags span {
+    padding: 5px 12px;
+    font-size: 0.7rem;
+  }
+
+  /* Formation logo */
+  .formation-logo {
+    width: 46px;
+    height: 46px;
+    padding: 5px;
+  }
+
+  .freelance-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .freelance-logo svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Skills section mobile */
+  .skills-new {
+    padding: clamp(30px, 6vw, 50px) 0;
+  }
+
+  .skills-header {
+    margin-bottom: clamp(28px, 5vw, 40px);
+  }
+
+  .skills-header h2 {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+  }
+
+  /* Coming soon section */
+  .coming-soon-container {
+    padding: clamp(40px, 8vw, 80px) 16px;
+  }
+
+  .coming-soon-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 22px;
+  }
+
+  .coming-soon-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .coming-soon-container h2 {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+  }
+
+  .coming-soon-text {
+    font-size: 1rem;
+  }
+}
+
+/* Petits mobiles */
+@media (max-width: 480px) {
+  body {
+    padding: 16px;
+  }
+
+  /* Navigation très petits écrans */
+  .nav-floating {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .nav-brand {
+    gap: 10px;
+  }
+
+  .brand-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 0.9rem;
+  }
+
+  .nav-pills {
+    width: 100%;
+    justify-content: center;
+    padding: 4px;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .nav-pill {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    gap: 6px;
+  }
+
+  .nav-pill svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Masquer le texte des pills sur très petit écran, garder juste icônes */
+  .nav-pill span:not(.nav-icon) {
+    display: none;
+  }
+
+  .nav-pill {
+    padding: 10px;
+  }
+
+  /* Hero très petits écrans */
+  .hero {
+    margin-bottom: 36px;
+  }
+
+  .hero-single {
+    margin-bottom: 44px;
+  }
+
+  .hero-wrapper {
+    gap: 24px;
+  }
+
+  .hero-text {
+    gap: 12px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.7rem;
+    line-height: 1.15;
+  }
+
+  .hero-text h2 {
+    font-size: 0.95rem;
+  }
+
+  .lead {
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  .hero-bubble {
+    width: 160px;
+  }
+
+  .hero-cta {
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-cta .spark-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .hero-socials {
+    gap: 8px;
+  }
+
+  .icon-link {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hero-contact {
+    gap: 10px;
+  }
+
+  .hero-contact .pill {
+    font-size: 0.7rem;
+    padding: 5px 12px;
+  }
+
+  /* Buttons petits écrans */
+  .spark-btn {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+
+  .spark-btn.primary {
+    padding: 11px 20px;
+  }
+
+  /* Floating buttons */
+  .floating-theme-toggle {
+    width: 44px;
+    height: 44px;
+    top: 8px;
+    left: 12px;
+  }
+
+  body.cv-floating .cv-btn {
+    width: 44px;
+    height: 44px;
+    top: 58px;
+    left: 12px;
+  }
+
+  /* Panel très petits écrans */
+  .panel {
+    padding: 16px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .panel-header h2 {
+    font-size: 1.3rem;
+    margin-top: 10px;
+  }
+
+  .panel-header .pill {
+    padding: 8px 16px;
+    font-size: 0.75rem;
+  }
+
+  /* Parcours section */
+  .parcours-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .parcours-subtitle {
+    font-size: 0.9rem;
+  }
+
+  /* Bento très petits écrans */
+  .bento-grid {
+    gap: 14px;
+  }
+
+  .bento-card {
+    padding: 18px 16px;
+    border-radius: var(--radius-sm);
+  }
+
+  .bento-header {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .bento-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .formation-logo {
+    width: 42px;
+    height: 42px;
+    padding: 4px;
+  }
+
+  .freelance-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .bento-title {
+    font-size: 1.05rem;
+  }
+
+  .bento-date {
+    font-size: 0.75rem;
+  }
+
+  .bento-company {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+  }
+
+  .bento-list {
+    margin-bottom: 14px;
+  }
+
+  .bento-list li {
+    font-size: 0.8rem;
+    padding-left: 14px;
+    margin-bottom: 6px;
+  }
+
+  .bento-list li::before {
+    width: 5px;
+    height: 5px;
+    top: 8px;
+  }
+
+  .bento-badge {
+    padding: 5px 10px;
+    font-size: 0.68rem;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .bento-tags span {
+    padding: 4px 10px;
+    font-size: 0.65rem;
+  }
+
+  /* Formation cards */
+  .bento-formation .bento-title {
+    font-size: 1rem;
+  }
+
+  .bento-description {
+    font-size: 0.8rem;
+  }
+
+  /* Freelance card */
+  .bento-freelance .bento-list li {
+    flex: 1 1 100%;
+  }
+
+  /* Skills très petits écrans */
+  .skills-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .skills-categories {
+    gap: 14px;
+  }
+
+  .skill-category {
+    padding: 18px 16px;
+    border-radius: var(--radius-sm);
+  }
+
+  .category-title {
+    font-size: 0.95rem;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .category-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .category-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .skill-category .skill-orbit {
+    gap: 6px;
+  }
+
+  .skill-category .skill-orb {
+    padding: 7px 12px;
+    font-size: 0.75rem;
+  }
+
+  .skill-category .skill-orb.primary {
+    padding: 8px 14px;
+    font-size: 0.78rem;
+  }
+
+  /* Timeline très petits écrans */
+  .timeline {
+    --track-left: 12px;
+    --card-gap: 28px;
+    gap: 20px;
+  }
+
+  .timeline-card {
+    padding: 16px;
+    border-radius: var(--radius-sm);
+  }
+
+  .timeline-head {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .timeline-logo {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+  }
+
+  .timeline-card h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .timeline-card ul,
+  .timeline-card p {
+    font-size: 0.82rem;
+  }
+
+  .timeline-node {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Timeline carousel */
+  .timeline-slide {
+    padding: 0 12px 10px;
+  }
+
+  .timeline-dots {
+    padding: 8px 12px 16px;
+    gap: 8px;
+  }
+
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Coming soon très petits écrans */
+  .coming-soon-container {
+    padding: 32px 12px;
+    min-height: 220px;
+  }
+
+  .coming-soon-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 18px;
+  }
+
+  .coming-soon-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .coming-soon-container h2 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  .coming-soon-text {
+    font-size: 0.9rem;
+  }
+
+  /* Footer très petits écrans */
+  footer {
+    padding: 16px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    gap: 10px;
+  }
+
+  /* Orbes encore plus réduites */
+  .orb-1 {
+    width: 280px;
+    height: 280px;
+    filter: blur(80px);
+  }
+
+  .orb-2 {
+    width: 240px;
+    height: 240px;
+    filter: blur(80px);
+  }
+
+  .orb-3 {
+    width: 200px;
+    height: 200px;
+    filter: blur(80px);
+  }
+}
+
+/* Très très petits écrans (moins de 360px) */
+@media (max-width: 360px) {
+  body {
+    padding: 12px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-text h2 {
+    font-size: 0.88rem;
+  }
+
+  .nav-pill {
+    padding: 8px;
+  }
+
+  .nav-pill svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .bento-card {
+    padding: 14px 12px;
+  }
+
+  .bento-title {
+    font-size: 1rem;
+  }
+
+  .skill-category {
+    padding: 14px 12px;
+  }
+
+  .category-title {
+    font-size: 0.9rem;
+  }
+}
