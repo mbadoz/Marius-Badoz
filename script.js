@@ -174,5 +174,15 @@ window.addEventListener("pointermove", e => {
     card.style.setProperty("--tiltX", `${y}deg`);
     card.style.setProperty("--tiltY", `${-x}deg`);
   });
-  stars.style.transform = `translate(${x * -1}px, ${y * -1}px)`;
+  if (stars) stars.style.transform = `translate(${x * -1}px, ${y * -1}px)`;
+});
+
+// Cartes Bento pliables / Collapsible Bento Cards
+const bentoCards = document.querySelectorAll(".bento-card");
+
+bentoCards.forEach(card => {
+  card.addEventListener("click", () => {
+    // Toggle l'état expanded de la carte cliquée
+    card.classList.toggle("expanded");
+  });
 });
