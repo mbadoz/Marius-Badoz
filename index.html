@@ -1,423 +1,338 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <!-- Métadonnées globales et imports de police / CSS -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marius — Portfolio</title>
-    <meta name="description" content="Portfolio ultra-moderne de Marius, designer et développeur front-end." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- Orbes pastels animées - Soft Pop Glass iOS -->
-    <div class="bg-orbs" aria-hidden="true">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-      <div class="orb orb-3"></div>
-      <div class="orb orb-4"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marius Badoz | Ingénieur Data & IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome pour les icones sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="antialiased">
+
+    <!-- Cursor System -->
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+    
+    <!-- Background FX -->
+    <div class="orb-container">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
     </div>
-    <header class="hero hero-single" id="top">
-      <!-- Navigation principale - Style Floating Pills -->
-      <nav class="nav-floating">
-        <div class="nav-brand">
-          <span class="brand-icon">MB</span>
+    <div class="scanlines"></div>
+
+    <!-- Nav -->
+    <nav class="fixed w-full p-6 flex justify-between items-center z-50 glass-panel border-b border-white/5 top-0">
+        <div class="text-xl font-bold tracking-widest text-white interactable">M.<span class="text-cyan-400">BADOZ</span></div>
+        <div class="flex items-center gap-6">
+            <div class="hidden md:flex gap-6 text-sm tracking-wider text-gray-400">
+                <a href="#about" class="interactable hover:text-white transition-colors cursor-pointer">PROFIL</a>
+                <a href="#projects" class="interactable hover:text-white transition-colors cursor-pointer">PROJETS</a>
+                <a href="#experience" class="interactable hover:text-white transition-colors cursor-pointer">PARCOURS</a>
+                <a href="#skills" class="interactable hover:text-white transition-colors cursor-pointer">SKILLS</a>
+            </div>
+            <div class="flex gap-4 items-center">
+                <a href="https://www.linkedin.com/in/marius-badoz/" target="_blank" rel="noopener noreferrer" class="interactable text-cyan-400 hover:text-cyan-300 transition-colors text-xl">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/mbadoz" target="_blank" rel="noopener noreferrer" class="interactable text-purple-400 hover:text-purple-300 transition-colors text-xl">
+                    <i class="fab fa-github"></i>
+                </a>
+                <button id="theme-toggle" class="interactable" aria-label="Toggle theme">
+                    <i class="fas fa-sun text-lg" id="theme-icon"></i>
+                </button>
+            </div>
         </div>
-        <div class="nav-pills">
-          <a href="#parcours" class="nav-pill active">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-            </svg>
-            Parcours
-          </a>
-          <a href="#skills" class="nav-pill">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
-            Skills
-          </a>
-          <a href="#projects" class="nav-pill">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-            </svg>
-            Projets
-          </a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-32">
+        <div class="z-10 relative max-w-7xl mx-auto w-full">
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+
+                <!-- Photo de Profil à gauche -->
+                <div class="flex-shrink-0 relative group reveal-up">
+                    <!-- Lueur d'arrière-plan -->
+                    <div class="absolute -inset-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full blur-2xl opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                    <!-- Image avec fallback si le fichier n'est pas trouvé immédiatement -->
+                    <img src="image/photoDeProfil.jpg"
+                         onerror="this.src='https://ui-avatars.com/api/?name=Marius+Badoz&background=0D8ABC&color=fff&size=200'"
+                         alt="Marius Badoz"
+                         class="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full border-4 border-white/10 object-cover object-top shadow-[0_0_60px_rgba(0,255,255,0.3)] interactable hover:scale-105 transition-transform duration-500 bg-black/50">
+                </div>
+
+                <!-- Contenu à droite -->
+                <div class="flex-1 text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-2 mb-4">
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                        <p class="text-cyan-400 tracking-[0.3em] text-xs font-bold uppercase">Open to Work</p>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-2 glass-text interactable glitch-wrapper">
+                        <span class="glitch-text inline-block">MARIUS</span><br>
+                        <span class="inline-block">BADOZ</span>
+                    </h1>
+                    <h2 class="text-lg md:text-xl lg:text-2xl text-purple-300 font-bold tracking-widest mb-6">Ingénieur Data & Full Stack • IA Specialist</h2>
+
+                    <p class="max-w-2xl text-gray-400 font-light text-base md:text-lg mb-8 glass-panel p-6 rounded-2xl leading-relaxed">
+                        Je bâtis des architectures durables et optimise des traitements de données massifs.
+                        <br>Vision métier globale. Expertise IA. Apprentissage par l'action.
+                    </p>
+
+                    <div class="flex gap-4 justify-center md:justify-start flex-wrap">
+                        <a href="mailto:badozmarius@gmail.com" class="px-8 py-3 bg-cyan-600/20 border border-cyan-500 text-cyan-400 font-bold uppercase tracking-widest hover:bg-cyan-500 hover:text-black transition-all interactable">
+                            Me Contacter
+                        </a>
+                        <a href="#projects" class="px-8 py-3 bg-transparent border border-white/20 text-white font-bold uppercase tracking-widest hover:bg-white/10 transition-all interactable">
+                            Voir mes projets
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </nav>
-      <div class="hero-wrapper">
-        <div class="hero-text">
-          
-          <h1>Marius Badoz</h1>
-          <h2>Ingénieur Data & Full Stack, Spécialiste en IA</h2>
-          <p class="lead">
-            Ma forte curiosité m'a poussé et me pousse encore à bâtir des bases solides sur chaque domaine technique, me donnant une vision d'ensemble claire pour la compréhension des enjeux métier. Je me sers de cette expertise pour proposer des solutions complètes, notamment dans les problématiques liées à l'IA. Je suis à la recherche d'un environnement où je peux prendre des initiatives, mettre en œuvre des architectures durables et continuer d'apprendre par l'action. J'ai à cœur de contribuer activement au succès des projets et de laisser une marque positive par la qualité de mon travail.
-          </p>
-          <div class="hero-contact">
-            <a href="tel:+33668272696" class="ghost-link">06 68 27 26 96</a>
-            <a href="mailto:badozmarius@gmail.com" class="ghost-link">badozmarius@gmail.com</a>
-            <span class="pill muted">Basé à Paris · Handball N3</span>
-          </div>
-          <div class="hero-cta">
-            <a href="image/CV_MB.pdf" class="spark-btn primary cv-btn" id="cvButton" target="_blank" rel="noopener">
-              <span>Voir mon CV</span>
-            </a>
-            <div class="hero-socials">
-              <a href="https://github.com/marius-badoz" class="icon-link github-link" aria-label="GitHub de Marius" target="_blank" rel="noopener">
-                <img class="github-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" />
-              </a>
-              <a href="https://www.linkedin.com/in/marius-badoz" class="icon-link linkedin-link" aria-label="LinkedIn de Marius" target="_blank" rel="noopener">
-                <img class="linkedin-icon" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="" />
-              </a>
-            </div>
-          </div>
+        
+        <!-- 3D Grid Floor Simulation -->
+        <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-cyan-900/20 to-transparent transform perspective-[1000px] rotate-x-60 opacity-30 pointer-events-none"
+             style="background-image: linear-gradient(to right, rgba(0,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;">
         </div>
-        <div class="hero-photo" aria-label="Portrait de Marius Badoz">
-          <div class="hero-bubble">
-            <img src="image/photoDeProfil.jpg" alt="Portrait de Marius Badoz" />
-          </div>
-          <!-- <p>Data craftsmanship · Cloud &amp; IA appliquée</p> -->
-        </div>
-      </div>
-    </header>
+    </section>
 
-    <main>
-      <!-- Section Parcours - Nouveau Design Bento -->
-      <section class="panel parcours-section" id="parcours">
-        <div class="parcours-header">
-          <h2>Mon Parcours</h2>
-          <p class="parcours-subtitle">Expérience professionnelle & Formation</p>
-        </div>
-
-        <!-- Bento Grid pour Expériences -->
-        <div class="bento-grid">
-          <!-- Carte Principale - Expérience actuelle -->
-          <article class="bento-card bento-featured" data-color="lavender">
-            <div class="bento-card-header">
-              <div class="bento-header-left">
-                <div class="bento-logo">
-                  <img src="image/logo_grouapama_support_services.png" alt="Logo Groupama" loading="lazy" />
-                </div>
-                <div class="bento-header-info">
-                  <div class="bento-badge">
-                    <span class="status-dot"></span>
-                    Poste actuel
-                  </div>
-                  <h3 class="bento-title">Ingénieur Data</h3>
-                  <p class="bento-company">Groupama Supports et Services</p>
-                  <span class="bento-date">Août 2025 — Aujourd'hui · Paris</span>
-                </div>
-              </div>
-              <div class="bento-expand-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </div>
-            </div>
-            <div class="bento-collapsible">
-              <ul class="bento-list">
-                <li>Optimisation des traitements sur des gros volumes de données sensibles</li>
-                <li>Implémentation robuste et pérenne à travers la paramétrisation et la modularité</li>
-                <li>Gestion de l'infocentre des flux financiers de Groupama Épargne Salariale</li>
-              </ul>
-              <div class="bento-tags">
-                <span>Big Data</span>
-                <span>Finance</span>
-                <span>ETL</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Carte Secondaire - Expérience précédente -->
-          <article class="bento-card bento-medium" data-color="mint">
-            <div class="bento-card-header">
-              <div class="bento-header-left">
-                <div class="bento-logo">
-                  <img src="image/Logo-Groupama-2025.webp" alt="Logo Groupama CA" loading="lazy" />
-                </div>
-                <div class="bento-header-info">
-                  <h3 class="bento-title">Technicien Pilotage &amp; Organisation</h3>
-                  <p class="bento-company">Groupama Centre Atlantique</p>
-                  <span class="bento-date">Août 2024 — Août 2025 · Niort</span>
-                </div>
-              </div>
-              <div class="bento-expand-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </div>
-            </div>
-            <div class="bento-collapsible">
-              <ul class="bento-list">
-                <li>Automatisation des processus de pilotage et de récupération de données avec et sans intégration API en VBA, Python, SQL</li>
-                <li>Conception d'applications décisionnelles pour plusieurs services sur QlikSense</li>
-                <li>Audit de l'existant et élaboration de projets de refonte</li>
-                <li>Développement d'une campagne de SMS marketing en HTML, CSS et JavaScript</li>
-              </ul>
-              <div class="bento-tags">
-                <span>QlikSense</span>
-                <span>Python</span>
-                <span>VBA</span>
-                <span>SQL</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Freelance -->
-          <article class="bento-card bento-freelance" data-color="rose">
-            <div class="bento-card-header">
-              <div class="bento-header-left">
-                <div class="bento-logo freelance-logo">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                    <line x1="6" y1="12" x2="6" y2="12"/>
-                    <line x1="18" y1="12" x2="18" y2="12"/>
-                  </svg>
-                </div>
-                <div class="bento-header-info">
-                  <h3 class="bento-title">Consultant Data &amp; Automation</h3>
-                  <p class="bento-company">Freelance</p>
-                  <span class="bento-date">Août 2024 — Mars 2025 · Remote</span>
-                </div>
-              </div>
-              <div class="bento-expand-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </div>
-            </div>
-            <div class="bento-collapsible">
-              <ul class="bento-list">
-                <li>Automatisation pour les infopreneurs (tableau de bord, process, acquisition)</li>
-                <li>Démarchage et acquisition client en autonomie</li>
-              </ul>
-              <div class="bento-tags">
-                <span>Automation</span>
-                <span>Dashboard</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Formation EFREI -->
-          <article class="bento-card bento-formation" data-color="peach">
-            <div class="bento-card-header">
-              <div class="bento-header-left">
-                <div class="bento-logo formation-logo">
-                  <img src="image/Logo_Efrei_2022.svg.png" alt="Logo EFREI" loading="lazy" />
-                </div>
-                <div class="bento-header-info">
-                  <h3 class="bento-title">Diplôme d'Ingénieur</h3>
-                  <p class="bento-company">EFREI Paris · Big Data &amp; Machine Learning</p>
-                  <span class="bento-date">2025 — 2028</span>
-                </div>
-              </div>
-              <div class="bento-expand-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </div>
-            </div>
-            <div class="bento-collapsible">
-              <p class="bento-description">Machine Learning, Text Mining, Statistiques appliquées, Algorithmes distribués, Cloud &amp; DevOps</p>
-            </div>
-          </article>
-
-          <!-- Formation IUT -->
-          <article class="bento-card bento-formation bento-small" data-color="sky">
-            <div class="bento-card-header">
-              <div class="bento-header-left">
-                <div class="bento-logo formation-logo">
-                  <img src="image/POITIERS-UNIVERSITE-CMJN-2014.png" alt="Logo Université de Poitiers" loading="lazy" />
-                </div>
-                <div class="bento-header-info">
-                  <h3 class="bento-title">BUT Science des Données</h3>
-                  <p class="bento-company">IUT Poitiers · Mention Bien</p>
-                  <span class="bento-date">2023 — 2025</span>
-                </div>
-              </div>
-              <div class="bento-expand-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Section Projets -->
-      <section class="panel projects" id="projects">
-        <div class="coming-soon-container">
-          <div class="coming-soon-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-              <path d="M2 17l10 5 10-5"/>
-              <path d="M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <h2>Projets à venir</h2>
-          <p class="coming-soon-text">De nouveaux projets data & IA sont en préparation. Restez connectés.</p>
-        </div>
-      </section>
-
-      <!-- Section Compétences - Design par Catégories -->
-      <section class="panel skills-new" id="skills">
-        <div class="skills-header">
-          <h2>Compétences</h2>
+    <!-- PROJETS ENTREPRENEURIAUX (Scrollytelling) -->
+    <section id="projects" class="py-24 px-4 md:px-20 relative z-10">
+        <div class="mb-20 text-center reveal-up">
+            <h3 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Projets Entrepreneuriaux</h3>
+            <p class="text-gray-500 mt-2">Architecture complète & Solutions Cross-Platform</p>
         </div>
 
-        <div class="skills-categories">
-          <!-- Data Science & IA -->
-          <div class="skill-category">
-            <h3 class="category-title">
-              <span class="category-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2a4 4 0 0 1 4 4c0 1.1-.9 2-2 2h-4a2 2 0 0 1-2-2 4 4 0 0 1 4-4z"/>
-                  <path d="M12 8v8"/>
-                  <path d="M8 12h8"/>
-                  <circle cx="12" cy="20" r="2"/>
-                </svg>
-              </span>
-              Data Science & IA
-            </h3>
-            <div class="skill-orbit">
-              <span class="skill-orb primary">Machine Learning</span>
-              <span class="skill-orb">PyTorch</span>
-              <span class="skill-orb">TensorFlow</span>
-              <span class="skill-orb">Scikit-learn</span>
-              <span class="skill-orb">R</span>
-              <span class="skill-orb">SAS</span>
-              <span class="skill-orb">Prompt Engineering</span>
-              <span class="skill-orb">Env. Agentique</span>
-              <span class="skill-orb">Statistiques</span>
-              <span class="skill-orb">Algo. distribués</span>
-              <span class="skill-orb">Data Structures</span>
+        <!-- Projet 1 : App Mobile -->
+        <div class="flex flex-col md:flex-row items-center gap-10 mb-32 reveal-up">
+            <div class="w-full md:w-1/2">
+                <div class="glass-panel p-2 rounded-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500 interactable shadow-[0_0_30px_rgba(112,0,255,0.15)]">
+                    <div class="bg-[#0a0a0a] rounded-xl aspect-[4/3] relative overflow-hidden group border border-white/5 flex flex-col items-center justify-center">
+                        <i class="fas fa-mobile-alt text-7xl text-purple-500/50 mb-4 group-hover:scale-110 transition-transform"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-purple-900/40 to-transparent"></div>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <!-- Data Engineering & BI -->
-          <div class="skill-category">
-            <h3 class="category-title">
-              <span class="category-icon mint">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                  <line x1="12" y1="22.08" x2="12" y2="12"/>
-                </svg>
-              </span>
-              Data Engineering & BI
-            </h3>
-            <div class="skill-orbit">
-              <span class="skill-orb primary">SQL</span>
-              <span class="skill-orb">PostgreSQL</span>
-              <span class="skill-orb">MySQL</span>
-              <span class="skill-orb">Oracle</span>
-              <span class="skill-orb">NoSQL</span>
-              <span class="skill-orb primary">Python</span>
-              <span class="skill-orb">Pandas</span>
-              <span class="skill-orb">Streamlit</span>
-              <span class="skill-orb">Talend</span>
-              <span class="skill-orb">Informatica</span>
-              <span class="skill-orb">Azure Data Factory</span>
-              <span class="skill-orb primary">Qlik Sense</span>
-              <span class="skill-orb">Power BI</span>
-              <span class="skill-orb">Tableau</span>
-              <span class="skill-orb">VBA</span>
-              <span class="skill-orb">Scraping</span>
+            <div class="w-full md:w-1/2 pl-0 md:pl-10">
+                <span class="text-purple-400 text-xs font-bold tracking-widest block mb-2">AOÛT 2024 — PRÉSENT</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">App de Pilotage Commercial</h2>
+                <p class="text-gray-400 leading-relaxed mb-6 border-l-2 border-purple-500/50 pl-4">
+                    Conception d'une solution mobile cross-platform pour le suivi des KPI et la gestion des prospects. Architecture sécurisée multi-entreprises.
+                </p>
+                
+                <div class="mb-4">
+                    <h4 class="text-xs text-gray-500 uppercase tracking-widest mb-2">Stack Technique</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag text-purple-300 border-purple-500/30">React Native (Expo)</span>
+                        <span class="tech-tag text-purple-300 border-purple-500/30">Node.js / Hono</span>
+                        <span class="tech-tag text-purple-300 border-purple-500/30">PostgreSQL</span>
+                        <span class="tech-tag text-purple-300 border-purple-500/30">Drizzle ORM</span>
+                        <span class="tech-tag text-purple-300 border-purple-500/30">JWT / Bcrypt</span>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <!-- Développement Backend -->
-          <div class="skill-category">
-            <h3 class="category-title">
-              <span class="category-icon peach">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                  <line x1="8" y1="21" x2="16" y2="21"/>
-                  <line x1="12" y1="17" x2="12" y2="21"/>
-                </svg>
-              </span>
-              Développement Backend
-            </h3>
-            <div class="skill-orbit">
-              <span class="skill-orb">Node.js</span>
-              <span class="skill-orb">Hono</span>
-              <span class="skill-orb">PHP</span>
-              <span class="skill-orb">Java</span>
-              <span class="skill-orb">C</span>
-              <span class="skill-orb">API RESTful</span>
-              <span class="skill-orb">Auth Middleware</span>
-              <span class="skill-orb">Validation</span>
-            </div>
-          </div>
-
-          <!-- Développement Frontend -->
-          <div class="skill-category">
-            <h3 class="category-title">
-              <span class="category-icon sky">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                  <polyline points="2 17 12 22 22 17"/>
-                  <polyline points="2 12 12 17 22 12"/>
-                </svg>
-              </span>
-              Développement Frontend
-            </h3>
-            <div class="skill-orbit">
-              <span class="skill-orb primary">TypeScript</span>
-              <span class="skill-orb primary">React Native</span>
-              <span class="skill-orb">Expo</span>
-              <span class="skill-orb">React Navigation</span>
-              <span class="skill-orb">Tailwind CSS</span>
-              <span class="skill-orb">NativeWind</span>
-              <span class="skill-orb">HTML</span>
-              <span class="skill-orb">CSS</span>
-              <span class="skill-orb">JavaScript</span>
-            </div>
-          </div>
-
-          <!-- Cloud, DevOps & Systèmes -->
-          <div class="skill-category">
-            <h3 class="category-title">
-              <span class="category-icon rose">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
-                </svg>
-              </span>
-              Cloud, DevOps & Systèmes
-            </h3>
-            <div class="skill-orbit">
-              <span class="skill-orb primary">Docker</span>
-              <span class="skill-orb primary">Git</span>
-              <span class="skill-orb">GitHub</span>
-              <span class="skill-orb">Terminal</span>
-            </div>
-          </div>
         </div>
-      </section>
 
-    </main>
+        <!-- Projet 2 : Freelance -->
+        <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-20 reveal-up">
+            <div class="w-full md:w-1/2">
+                <div class="glass-panel p-2 rounded-2xl transform -rotate-1 hover:rotate-0 transition-transform duration-500 interactable shadow-[0_0_30px_rgba(0,255,255,0.15)]">
+                    <div class="bg-[#0a0a0a] rounded-xl aspect-[4/3] relative overflow-hidden group border border-white/5 flex flex-col items-center justify-center">
+                        <i class="fas fa-robot text-7xl text-cyan-500/50 mb-4 group-hover:scale-110 transition-transform"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-cyan-900/40 to-transparent"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 pr-0 md:pr-10 text-right md:text-left">
+                <div class="flex flex-col items-end md:items-start">
+                    <span class="text-cyan-400 text-xs font-bold tracking-widest block mb-2">AOÛT 2024 — MARS 2025</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Freelance Automation</h2>
+                    <p class="text-gray-400 leading-relaxed mb-6 border-r-2 md:border-r-0 md:border-l-2 border-cyan-500/50 pr-4 md:pr-0 md:pl-4">
+                        Automatisation de processus pour infopreneurs : création de tableaux de bord, systèmes d'acquisition et optimisation de workflows.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="text-xs text-gray-500 uppercase tracking-widest mb-2">Focus</h4>
+                        <div class="flex flex-wrap gap-2 justify-end md:justify-start">
+                            <span class="tech-tag text-cyan-300 border-cyan-500/30">Automation</span>
+                            <span class="tech-tag text-cyan-300 border-cyan-500/30">Dashboards</span>
+                            <span class="tech-tag text-cyan-300 border-cyan-500/30">Process Optim.</span>
+                            <span class="tech-tag text-cyan-300 border-cyan-500/30">Acquisition</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Footer minimal : crédits + ancre vers le haut -->
-    <footer>
-      <p>© 2025 Marius Badoz</p>
-      <a href="#top" class="ghost-link">Retour en orbite ↑</a>
+    <!-- EXPÉRIENCE PROFESSIONNELLE -->
+    <section id="experience" class="py-20 px-4 md:px-20 bg-black/40 relative">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-4xl font-bold mb-12 text-center text-white reveal-up">EXPERIENCE PRO</h3>
+            
+            <div class="relative pl-8 md:pl-0">
+                <!-- Vertical Line (Only on Desktop mostly, adjusted for mobile) -->
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-purple-600 via-cyan-500 to-transparent -translate-x-1/2 opacity-30"></div>
+
+                <!-- Expérience 1 -->
+                <div class="flex flex-col md:flex-row justify-between items-center mb-16 reveal-up group">
+                    <div class="w-full md:w-5/12 text-left md:text-right mb-4 md:mb-0">
+                        <div class="glass-panel p-6 rounded-xl border-l-4 border-l-purple-500 md:border-l-[1px] md:border-r-4 md:border-r-purple-500 hover:bg-white/5 transition-colors">
+                            <h4 class="text-xl font-bold text-white">Ingénieur Data</h4>
+                            <p class="text-purple-400 text-sm font-bold tracking-wider mb-2 flex items-center gap-2 justify-start md:justify-end">
+                                <img src="image/logo_grouapama_support_services.png" alt="Groupama S&S" class="h-4 w-auto object-contain opacity-70">
+                                GROUPAMA S&S • PARIS
+                            </p>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Optimisation des traitements Big Data sensibles. Implémentation modulaire et gestion de l'infocentre des flux financiers Épargne Salariale.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-purple-600 border-4 border-black z-10 shadow-[0_0_15px_#9333ea] hidden md:block"></div>
+                    <div class="w-full md:w-5/12 pl-0 md:pl-8">
+                        <span class="text-xs text-gray-500 font-mono">AOÛT 2025 — AUJOURD'HUI</span>
+                    </div>
+                </div>
+
+                <!-- Expérience 2 -->
+                <div class="flex flex-col md:flex-row justify-between items-center mb-16 reveal-up group">
+                    <div class="w-full md:w-5/12 text-left md:text-right pr-0 md:pr-8 mb-4 md:mb-0 order-1 md:order-1">
+                        <span class="text-xs text-gray-500 font-mono">AOÛT 2024 — AOÛT 2025</span>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-cyan-600 border-4 border-black z-10 shadow-[0_0_15px_#0891b2] hidden md:block order-2"></div>
+                    <div class="w-full md:w-5/12 order-3">
+                        <div class="glass-panel p-6 rounded-xl border-l-4 border-l-cyan-500 hover:bg-white/5 transition-colors">
+                            <h4 class="text-xl font-bold text-white">Technicien Pilotage & Orga.</h4>
+                            <p class="text-cyan-400 text-sm font-bold tracking-wider mb-2 flex items-center gap-2">
+                                <img src="image/Logo-Groupama-2025.webp" alt="Groupama" class="h-4 w-auto object-contain opacity-70">
+                                GROUPAMA CENTRE ATL. • NIORT
+                            </p>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                Automatisation (VBA, Python, SQL) et Business Intelligence (QlikSense).
+                                <br>Audit et refonte de projets. Développement SMS Marketing.
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="text-[10px] px-2 py-1 bg-white/5 rounded text-gray-400">Python</span>
+                                <span class="text-[10px] px-2 py-1 bg-white/5 rounded text-gray-400">SQL</span>
+                                <span class="text-[10px] px-2 py-1 bg-white/5 rounded text-gray-400">QlikSense</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS & EDUCATION GRID -->
+    <section id="skills" class="py-24 px-4 md:px-20 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Education Col -->
+            <div class="col-span-1 reveal-up">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-graduation-cap text-purple-500"></i> FORMATION
+                </h3>
+                <div class="space-y-6">
+                    <div class="glass-panel p-6 rounded-xl border-t-purple-500/50">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold">Ingénieur Big Data & ML</h4>
+                            <span class="text-xs bg-purple-900/50 px-2 py-1 rounded text-purple-300">2025-28</span>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-2 flex items-center gap-2">
+                            <img src="image/Logo_Efrei_2022.svg.png" alt="EFREI" class="h-4 w-auto object-contain opacity-70">
+                            EFREI Paris, Panthéon-Assas
+                        </p>
+                        <p class="text-xs text-gray-500">ML, Text Mining, NoSQL, Cloud, DevOps, MLOps.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-xl">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold">DUT Science des Données</h4>
+                            <span class="text-xs bg-gray-800 px-2 py-1 rounded text-gray-400">2023-25</span>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-2 flex items-center gap-2">
+                            <img src="image/POITIERS-UNIVERSITE-CMJN-2014.png" alt="Université de Poitiers" class="h-4 w-auto object-contain opacity-70">
+                            IUT Poitiers
+                        </p>
+                        <span class="text-xs text-green-400 border border-green-500/30 px-2 py-0.5 rounded-full">Mention Bien</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Cols -->
+            <div class="col-span-1 md:col-span-2 reveal-up delay-100">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-microchip text-cyan-500"></i> COMPÉTENCES TECHNIQUES
+                </h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Data & AI -->
+                    <div class="glass-panel p-5 rounded-xl hover:border-cyan-500/30 transition-colors">
+                        <h5 class="text-cyan-400 font-bold text-sm mb-3 uppercase tracking-wider">Data Science & IA</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">R / SAS</span>
+                            <span class="tech-tag text-white border-white/20">Prompt Eng.</span>
+                            <span class="tech-tag">Agents IA</span>
+                            <span class="tech-tag">Stats Analytiques</span>
+                        </div>
+                    </div>
+
+                    <!-- Backend -->
+                    <div class="glass-panel p-5 rounded-xl hover:border-purple-500/30 transition-colors">
+                        <h5 class="text-purple-400 font-bold text-sm mb-3 uppercase tracking-wider">Backend Dev</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag text-white border-white/20">Hono</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">RESTful Arch.</span>
+                            <span class="tech-tag">Middleware Auth</span>
+                        </div>
+                    </div>
+
+                    <!-- Data Eng -->
+                    <div class="glass-panel p-5 rounded-xl hover:border-blue-500/30 transition-colors">
+                        <h5 class="text-blue-400 font-bold text-sm mb-3 uppercase tracking-wider">Data Eng & BI</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">SQL (Postgre/Oracle)</span>
+                            <span class="tech-tag">NoSQL</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">ETL (Talend/Azure)</span>
+                            <span class="tech-tag">PowerBI</span>
+                            <span class="tech-tag">QlikSense</span>
+                            <span class="tech-tag">Scraping</span>
+                        </div>
+                    </div>
+
+                    <!-- Frontend & DevOps -->
+                    <div class="glass-panel p-5 rounded-xl hover:border-pink-500/30 transition-colors">
+                        <h5 class="text-pink-400 font-bold text-sm mb-3 uppercase tracking-wider">Front & DevOps</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag text-white border-white/20">React Native / Expo</span>
+                            <span class="tech-tag">Tailwind</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Git / GitHub</span>
+                            <span class="tech-tag">CI/CD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Simple -->
+    <footer class="text-center py-8 text-xs text-gray-600 uppercase tracking-widest border-t border-white/5 mt-10">
+        &copy; 2025 Marius Badoz. Tous droits réservés.
     </footer>
 
-    <button class="floating-theme-toggle" id="floatingThemeToggle" aria-label="Changer de thème">
-      <img
-        class="floating-icon"
-        src="https://img.icons8.com/?size=100&id=101343&format=png&color=000000"
-        data-moon="https://img.icons8.com/?size=100&id=101343&format=png&color=000000"
-        data-sun="https://img.icons8.com/?size=100&id=9313&format=png&color=000000"
-        alt=""
-        aria-hidden="true"
-      />
-    </button>
-
-    <!-- Script d'interactions (thème, tilt, soumission formulaire...) -->
+    <!-- Custom Scripts -->
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
