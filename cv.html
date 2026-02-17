@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV — Marius Badoz | AI Solution Architect</title>
+    <meta name="description" content="Curriculum Vitae de Marius Badoz — AI Solution Architect & GenAI Specialist.">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #06060b;
+            --bg-secondary: #0c0c14;
+            --surface: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(255, 255, 255, 0.12);
+            --text-primary: #f0f0f5;
+            --text-secondary: #8a8a9a;
+            --text-tertiary: #5a5a6a;
+            --accent-cyan: #38d9f5;
+            --accent-purple: #a07cff;
+            --accent-emerald: #34d399;
+            --radius: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .cv-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-cyan);
+            border-color: rgba(56, 217, 245, 0.2);
+            background: rgba(56, 217, 245, 0.05);
+        }
+
+        /* PDF Viewer */
+        .cv-viewer {
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cv-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1.25rem;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cv-toolbar-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .cv-toolbar-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .cv-toolbar-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.03em;
+        }
+
+        .cv-toolbar-btn:hover {
+            color: var(--accent-cyan);
+            border-color: rgba(56, 217, 245, 0.2);
+            background: rgba(56, 217, 245, 0.05);
+        }
+
+        .cv-embed {
+            width: 100%;
+            min-height: 80vh;
+            border: none;
+            display: block;
+        }
+
+        /* Fallback image display */
+        .cv-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Noise overlay */
+        .noise-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px;
+        }
+
+        /* Gradient blobs */
+        .bg-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .bg-blob-1 {
+            width: 40vw; height: 40vw;
+            background: radial-gradient(circle, var(--accent-purple) 0%, transparent 70%);
+            top: -15%; left: -10%;
+            opacity: 0.12;
+        }
+
+        .bg-blob-2 {
+            width: 35vw; height: 35vw;
+            background: radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%);
+            bottom: -10%; right: -10%;
+            opacity: 0.08;
+        }
+
+        @media (max-width: 768px) {
+            .cv-page { padding: 1rem; }
+            .cv-toolbar { flex-direction: column; gap: 0.5rem; }
+            .cv-embed { min-height: 60vh; }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise-bg"></div>
+    <div class="bg-blob bg-blob-1"></div>
+    <div class="bg-blob bg-blob-2"></div>
+
+    <div class="cv-page">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Retour au portfolio
+        </a>
+
+        <div class="cv-viewer">
+            <div class="cv-toolbar">
+                <span class="cv-toolbar-title">
+                    <i class="fas fa-file-alt" style="color: var(--accent-purple); margin-right: 0.5rem;"></i>
+                    Curriculum Vitae — Marius Badoz
+                </span>
+                <div class="cv-toolbar-actions">
+                    <a href="image/CV_MB_.pdf" download class="cv-toolbar-btn">
+                        <i class="fas fa-download"></i> Télécharger PDF
+                    </a>
+                    <a href="image/CV_MB_.pdf" target="_blank" class="cv-toolbar-btn">
+                        <i class="fas fa-external-link-alt"></i> Ouvrir
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Try PDF embed first, fallback to image -->
+            <object data="image/CV_MB_.pdf" type="application/pdf" class="cv-embed">
+                <!-- Fallback: show rendered PNG -->
+                <img src="image/CV_MB_preview.png" alt="CV de Marius Badoz" class="cv-image">
+            </object>
+        </div>
+    </div>
+</body>
+</html>

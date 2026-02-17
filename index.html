@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marius Badoz | Ingénieur Data & IA</title>
+    <title>Marius Badoz | AI Solution Architect & GenAI Specialist</title>
+    <meta name="description" content="Portfolio de Marius Badoz — Ingénieur Solution Architect spécialisé en IA Générative, Data Engineering et développement Full Stack.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome pour les icones sociales -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="antialiased">
@@ -18,149 +17,222 @@
     <div id="cursor-follower"></div>
     
     <!-- Background FX -->
-    <div class="orb-container">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
+    <div class="noise-overlay"></div>
+    <div class="gradient-mesh">
+        <div class="mesh-blob mesh-1"></div>
+        <div class="mesh-blob mesh-2"></div>
+        <div class="mesh-blob mesh-3"></div>
     </div>
-    <div class="scanlines"></div>
 
     <!-- Nav -->
-    <nav class="fixed w-full p-6 flex justify-between items-center z-50 glass-panel border-b border-white/5 top-0">
-        <div class="text-xl font-bold tracking-widest text-white interactable">M.<span class="text-cyan-400">BADOZ</span></div>
-        <div class="flex items-center gap-6">
-            <div class="hidden md:flex gap-6 text-sm tracking-wider text-gray-400">
-                <a href="#about" class="interactable hover:text-white transition-colors cursor-pointer">PROFIL</a>
-                <a href="#projects" class="interactable hover:text-white transition-colors cursor-pointer">PROJETS</a>
-                <a href="#experience" class="interactable hover:text-white transition-colors cursor-pointer">PARCOURS</a>
-                <a href="#skills" class="interactable hover:text-white transition-colors cursor-pointer">SKILLS</a>
+    <nav class="fixed w-full px-6 py-4 flex justify-between items-center z-50 nav-glass top-0">
+        <a href="#" class="logo-mark interactable">
+            <span class="logo-bracket">[</span>M<span class="logo-dot">.</span>B<span class="logo-bracket">]</span>
+        </a>
+        <div class="flex items-center gap-8">
+            <div class="hidden md:flex gap-8 nav-links">
+                <a href="#about" class="interactable nav-link">Profil</a>
+                <a href="#projects" class="interactable nav-link">Projets</a>
+                <a href="#experience" class="interactable nav-link">Parcours</a>
+                <a href="#skills" class="interactable nav-link">Stack</a>
             </div>
-            <div class="flex gap-4 items-center">
-                <a href="https://www.linkedin.com/in/marius-badoz/" target="_blank" rel="noopener noreferrer" class="interactable text-cyan-400 hover:text-cyan-300 transition-colors text-xl">
-                    <i class="fab fa-linkedin"></i>
+            <div class="flex gap-3 items-center">
+                <a href="https://www.linkedin.com/in/marius-badoz/" target="_blank" rel="noopener noreferrer" class="interactable social-icon social-linkedin" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://github.com/mbadoz" target="_blank" rel="noopener noreferrer" class="interactable text-purple-400 hover:text-purple-300 transition-colors text-xl">
+                <a href="https://github.com/mbadoz" target="_blank" rel="noopener noreferrer" class="interactable social-icon social-github" aria-label="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
                 <button id="theme-toggle" class="interactable" aria-label="Toggle theme">
-                    <i class="fas fa-sun text-lg" id="theme-icon"></i>
+                    <i class="fas fa-sun text-sm" id="theme-icon"></i>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-32">
-        <div class="z-10 relative max-w-7xl mx-auto w-full">
-            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn" class="fixed top-4 right-4 z-[60] md:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10" aria-label="Menu">
+        <i class="fas fa-bars text-white"></i>
+    </button>
 
-                <!-- Photo de Profil à gauche -->
+    <!-- HERO SECTION -->
+    <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-32">
+        <div class="z-10 relative max-w-6xl mx-auto w-full">
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+
+                <!-- Photo de profil -->
                 <div class="flex-shrink-0 relative group reveal-up">
-                    <!-- Lueur d'arrière-plan -->
-                    <div class="absolute -inset-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full blur-2xl opacity-30 group-hover:opacity-60 transition duration-500"></div>
-                    <!-- Image avec fallback si le fichier n'est pas trouvé immédiatement -->
+                    <div class="photo-glow"></div>
+                    <div class="photo-ring"></div>
                     <img src="image/photoDeProfil.jpg"
                          onerror="this.src='https://ui-avatars.com/api/?name=Marius+Badoz&background=0D8ABC&color=fff&size=200'"
                          alt="Marius Badoz"
-                         class="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full border-4 border-white/10 object-cover object-top shadow-[0_0_60px_rgba(0,255,255,0.3)] interactable hover:scale-105 transition-transform duration-500 bg-black/50">
+                         class="relative w-44 h-44 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-full object-cover object-top interactable photo-img">
                 </div>
 
-                <!-- Contenu à droite -->
+                <!-- Hero Content -->
                 <div class="flex-1 text-center md:text-left">
-                    <div class="flex items-center justify-center md:justify-start gap-2 mb-4">
-                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                        <p class="text-cyan-400 tracking-[0.3em] text-xs font-bold uppercase">Open to Work</p>
+                    <div class="flex items-center justify-center md:justify-start gap-2 mb-5">
+                        <span class="status-dot"></span>
+                        <p class="status-text">Disponible — Alternance</p>
                     </div>
-                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-2 glass-text interactable glitch-wrapper">
-                        <span class="glitch-text inline-block">MARIUS</span><br>
-                        <span class="inline-block">BADOZ</span>
+                    
+                    <h1 class="hero-title interactable reveal-up">
+                        <span class="hero-first">MARIUS</span>
+                        <span class="hero-last">BADOZ</span>
                     </h1>
-                    <h2 class="text-lg md:text-xl lg:text-2xl text-purple-300 font-bold tracking-widest mb-6">Ingénieur Data & Full Stack • IA Specialist</h2>
+                    
+                    <h2 class="hero-subtitle reveal-up">
+                        AI Solution Architect <span class="subtitle-sep">•</span> GenAI Specialist
+                    </h2>
 
-                    <p class="max-w-2xl text-gray-400 font-light text-base md:text-lg mb-8 glass-panel p-6 rounded-2xl leading-relaxed">
-                        Je bâtis des architectures durables et optimise des traitements de données massifs.
-                        <br>Vision métier globale. Expertise IA. Apprentissage par l'action.
+                    <p class="hero-desc reveal-up">
+                        Ma forte curiosité m'a poussé à bâtir des bases solides sur chaque domaine technique — Cloud, Data, Fullstack. Je me sers de cette expertise pour proposer des solutions sûres et performantes, notamment dans les problématiques liées à l'IA.
                     </p>
 
-                    <div class="flex gap-4 justify-center md:justify-start flex-wrap">
-                        <a href="mailto:badozmarius@gmail.com" class="px-8 py-3 bg-cyan-600/20 border border-cyan-500 text-cyan-400 font-bold uppercase tracking-widest hover:bg-cyan-500 hover:text-black transition-all interactable">
-                            Me Contacter
+                    <div class="flex gap-4 justify-center md:justify-start flex-wrap mt-8 reveal-up">
+                        <a href="mailto:badozmarius@gmail.com" class="btn-primary interactable">
+                            <i class="fas fa-envelope mr-2"></i>Me Contacter
                         </a>
-                        <a href="#projects" class="px-8 py-3 bg-transparent border border-white/20 text-white font-bold uppercase tracking-widest hover:bg-white/10 transition-all interactable">
-                            Voir mes projets
+                        <a href="cv.html" class="btn-secondary interactable">
+                            <i class="fas fa-file-alt mr-2"></i>Mon CV
+                        </a>
+                        <a href="#projects" class="btn-ghost interactable">
+                            Voir mes projets <i class="fas fa-arrow-down ml-2"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- 3D Grid Floor Simulation -->
-        <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-cyan-900/20 to-transparent transform perspective-[1000px] rotate-x-60 opacity-30 pointer-events-none"
-             style="background-image: linear-gradient(to right, rgba(0,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;">
-        </div>
+        <!-- Geometric decoration -->
+        <div class="hero-geo hero-geo-1"></div>
+        <div class="hero-geo hero-geo-2"></div>
+        <div class="hero-geo hero-geo-3"></div>
     </section>
 
-    <!-- PROJETS ENTREPRENEURIAUX (Scrollytelling) -->
+
+
+    <!-- PROJETS -->
     <section id="projects" class="py-24 px-4 md:px-20 relative z-10">
-        <div class="mb-20 text-center reveal-up">
-            <h3 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Projets Entrepreneuriaux</h3>
-            <p class="text-gray-500 mt-2">Architecture complète & Solutions Cross-Platform</p>
-        </div>
+        <div class="max-w-6xl mx-auto">
+            <div class="section-header reveal-up">
+                <span class="section-tag">Portfolio</span>
+                <h3 class="section-title">Projets</h3>
+                <p class="section-subtitle">Applications, outils open-source & expérimentations</p>
+            </div>
 
-        <!-- Projet 1 : App Mobile -->
-        <div class="flex flex-col md:flex-row items-center gap-10 mb-32 reveal-up">
-            <div class="w-full md:w-1/2">
-                <div class="glass-panel p-2 rounded-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500 interactable shadow-[0_0_30px_rgba(112,0,255,0.15)]">
-                    <div class="bg-[#0a0a0a] rounded-xl aspect-[4/3] relative overflow-hidden group border border-white/5 flex flex-col items-center justify-center">
-                        <i class="fas fa-mobile-alt text-7xl text-purple-500/50 mb-4 group-hover:scale-110 transition-transform"></i>
-                        <div class="absolute inset-0 bg-gradient-to-t from-purple-900/40 to-transparent"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full md:w-1/2 pl-0 md:pl-10">
-                <span class="text-purple-400 text-xs font-bold tracking-widest block mb-2">AOÛT 2024 — PRÉSENT</span>
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">App de Pilotage Commercial</h2>
-                <p class="text-gray-400 leading-relaxed mb-6 border-l-2 border-purple-500/50 pl-4">
-                    Conception d'une solution mobile cross-platform pour le suivi des KPI et la gestion des prospects. Architecture sécurisée multi-entreprises.
-                </p>
-                
-                <div class="mb-4">
-                    <h4 class="text-xs text-gray-500 uppercase tracking-widest mb-2">Stack Technique</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-tag text-purple-300 border-purple-500/30">React Native (Expo)</span>
-                        <span class="tech-tag text-purple-300 border-purple-500/30">Node.js / Hono</span>
-                        <span class="tech-tag text-purple-300 border-purple-500/30">PostgreSQL</span>
-                        <span class="tech-tag text-purple-300 border-purple-500/30">Drizzle ORM</span>
-                        <span class="tech-tag text-purple-300 border-purple-500/30">JWT / Bcrypt</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <!-- Projects Grid -->
+            <div class="projects-grid">
 
-        <!-- Projet 2 : Freelance -->
-        <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-20 reveal-up">
-            <div class="w-full md:w-1/2">
-                <div class="glass-panel p-2 rounded-2xl transform -rotate-1 hover:rotate-0 transition-transform duration-500 interactable shadow-[0_0_30px_rgba(0,255,255,0.15)]">
-                    <div class="bg-[#0a0a0a] rounded-xl aspect-[4/3] relative overflow-hidden group border border-white/5 flex flex-col items-center justify-center">
-                        <i class="fas fa-robot text-7xl text-cyan-500/50 mb-4 group-hover:scale-110 transition-transform"></i>
-                        <div class="absolute inset-0 bg-gradient-to-t from-cyan-900/40 to-transparent"></div>
+                <!-- Projet 1 : Dver — Large card -->
+                <div class="project-card project-featured reveal-up">
+                    <div class="project-visual project-visual-dver">
+                        <img src="image/Dver-icon.png" alt="Dver App Icon" class="project-icon-img">
+                        <div class="project-visual-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date">Août 2024 — Présent</span>
+                            <span class="project-badge project-badge-live">
+                                <span class="badge-dot"></span> En production
+                            </span>
+                        </div>
+                        <h4 class="project-name">Dver</h4>
+                        <p class="project-desc">
+                            Application mobile de pilotage de l'activité commerciale. UI et fonctionnalités pensées pour maximiser l'efficacité utilisateur. Architecture full-stack cross-platform sécurisée et multi-tenant.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tech-tag accent-purple">React Native (Expo)</span>
+                            <span class="tech-tag accent-purple">Node.js / Hono</span>
+                            <span class="tech-tag accent-purple">PostgreSQL</span>
+                            <span class="tech-tag accent-purple">JWT / Bcrypt</span>
+                            <span class="tech-tag accent-purple">Drizzle ORM</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://dver.app/" target="_blank" rel="noopener noreferrer" class="project-link interactable">
+                                <i class="fas fa-external-link-alt"></i> Voir le site
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="w-full md:w-1/2 pr-0 md:pr-10 text-right md:text-left">
-                <div class="flex flex-col items-end md:items-start">
-                    <span class="text-cyan-400 text-xs font-bold tracking-widest block mb-2">AOÛT 2024 — MARS 2025</span>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Freelance Automation</h2>
-                    <p class="text-gray-400 leading-relaxed mb-6 border-r-2 md:border-r-0 md:border-l-2 border-cyan-500/50 pr-4 md:pr-0 md:pl-4">
-                        Automatisation de processus pour infopreneurs : création de tableaux de bord, systèmes d'acquisition et optimisation de workflows.
-                    </p>
-                    <div class="mb-4">
-                        <h4 class="text-xs text-gray-500 uppercase tracking-widest mb-2">Focus</h4>
-                        <div class="flex flex-wrap gap-2 justify-end md:justify-start">
-                            <span class="tech-tag text-cyan-300 border-cyan-500/30">Automation</span>
-                            <span class="tech-tag text-cyan-300 border-cyan-500/30">Dashboards</span>
-                            <span class="tech-tag text-cyan-300 border-cyan-500/30">Process Optim.</span>
-                            <span class="tech-tag text-cyan-300 border-cyan-500/30">Acquisition</span>
+
+                <!-- Projet 2 : PNG_to_SVG -->
+                <div class="project-card reveal-up">
+                    <div class="project-visual project-visual-tool">
+                        <i class="fas fa-exchange-alt project-visual-icon"></i>
+                        <div class="project-visual-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date">Février 2026</span>
+                            <span class="project-badge project-badge-oss">
+                                <i class="fab fa-github mr-1"></i> Open Source
+                            </span>
+                        </div>
+                        <h4 class="project-name">PNG to SVG</h4>
+                        <p class="project-desc">
+                            Outil de conversion d'icônes PNG en SVG. Interface web statique et CLI Python pour une utilisation flexible.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tech-tag accent-cyan">HTML / CSS / JS</span>
+                            <span class="tech-tag accent-cyan">Python</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/mbadoz/PNG_to_SVG" target="_blank" rel="noopener noreferrer" class="project-link interactable">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 3 : AlgoVizz -->
+                <div class="project-card reveal-up">
+                    <div class="project-visual project-visual-algo">
+                        <i class="fas fa-chart-bar project-visual-icon"></i>
+                        <div class="project-visual-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date">Janvier 2026</span>
+                            <span class="project-badge project-badge-oss">
+                                <i class="fab fa-github mr-1"></i> Open Source
+                            </span>
+                        </div>
+                        <h4 class="project-name">AlgoVizz</h4>
+                        <p class="project-desc">
+                            Visualiseur interactif d'algorithmes de tri et de recherche avec jeu de données personnalisable.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tech-tag accent-cyan">JavaScript</span>
+                            <span class="tech-tag accent-cyan">Visualisation</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/mbadoz/AlgoVizz" target="_blank" rel="noopener noreferrer" class="project-link interactable">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 4 : Freelance Automation -->
+                <div class="project-card reveal-up">
+                    <div class="project-visual project-visual-freelance">
+                        <i class="fas fa-robot project-visual-icon"></i>
+                        <div class="project-visual-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-date">Août 2024 — Mars 2025</span>
+                        </div>
+                        <h4 class="project-name">Freelance AI Automation</h4>
+                        <p class="project-desc">
+                            Automatisation avec IA pour infopreneurs indépendants : tableaux de bord, process d'acquisition client, avant-ventes et conseil.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tech-tag accent-emerald">Automation IA</span>
+                            <span class="tech-tag accent-emerald">Dashboards</span>
+                            <span class="tech-tag accent-emerald">Acquisition</span>
                         </div>
                     </div>
                 </div>
@@ -169,57 +241,62 @@
     </section>
 
     <!-- EXPÉRIENCE PROFESSIONNELLE -->
-    <section id="experience" class="py-20 px-4 md:px-20 bg-black/40 relative">
-        <div class="max-w-4xl mx-auto">
-            <h3 class="text-4xl font-bold mb-12 text-center text-white reveal-up">EXPERIENCE PRO</h3>
-            
-            <div class="relative pl-8 md:pl-0">
-                <!-- Vertical Line (Only on Desktop mostly, adjusted for mobile) -->
-                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-purple-600 via-cyan-500 to-transparent -translate-x-1/2 opacity-30"></div>
+    <section id="experience" class="py-24 px-4 md:px-20 relative z-10 exp-section">
+        <div class="max-w-5xl mx-auto">
+            <div class="section-header reveal-up">
+                <span class="section-tag">Parcours</span>
+                <h3 class="section-title">Expérience Professionnelle</h3>
+            </div>
 
-                <!-- Expérience 1 -->
-                <div class="flex flex-col md:flex-row justify-between items-center mb-16 reveal-up group">
-                    <div class="w-full md:w-5/12 text-left md:text-right mb-4 md:mb-0">
-                        <div class="glass-panel p-6 rounded-xl border-l-4 border-l-purple-500 md:border-l-[1px] md:border-r-4 md:border-r-purple-500 hover:bg-white/5 transition-colors">
-                            <h4 class="text-xl font-bold text-white">Ingénieur Data</h4>
-                            <p class="text-purple-400 text-sm font-bold tracking-wider mb-2 flex items-center gap-2 justify-start md:justify-end">
-                                <img src="image/logo_grouapama_support_services.png" alt="Groupama S&S" class="h-4 w-auto object-contain opacity-70">
-                                GROUPAMA S&S • PARIS
-                            </p>
-                            <p class="text-gray-400 text-sm leading-relaxed">
-                                Optimisation des traitements Big Data sensibles. Implémentation modulaire et gestion de l'infocentre des flux financiers Épargne Salariale.
-                            </p>
-                        </div>
+            <div class="timeline">
+                <!-- Exp 1 : Groupama Supports et Services -->
+                <div class="timeline-item reveal-up">
+                    <div class="timeline-marker">
+                        <div class="timeline-dot timeline-dot-active"></div>
+                        <div class="timeline-line-segment"></div>
                     </div>
-                    <div class="w-8 h-8 rounded-full bg-purple-600 border-4 border-black z-10 shadow-[0_0_15px_#9333ea] hidden md:block"></div>
-                    <div class="w-full md:w-5/12 pl-0 md:pl-8">
-                        <span class="text-xs text-gray-500 font-mono">AOÛT 2025 — AUJOURD'HUI</span>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <h4 class="timeline-role">Ingénieur Data</h4>
+                                <p class="timeline-company">
+                                    <img src="image/logo_grouapama_support_services.png" alt="Groupama S&S" class="timeline-logo">
+                                    Groupama Supports et Services — Paris
+                                </p>
+                            </div>
+                            <span class="timeline-date">Août 2025 — Aujourd'hui</span>
+                        </div>
+                        <ul class="timeline-details">
+                            <li>Architecture et optimisation de pipelines de données pour des volumes massifs (Flux financiers sensibles, 2 Milliards d'€ d'encours gérés quotidiennement).</li>
+                            <li>Implémentations modulaires et paramétrables visant à garantir la scalabilité et la qualité de la donnée pour les futurs modèles de Machine Learning (détection de fraudes).</li>
+                            <li>Gestion de l'infocentre de Groupama Épargne Salariale : sécurisation et intégrité des données critiques.</li>
+                            <li>Système RAG complexe (multi agents) facilitant la migration fonctionnelles (chiffrage en cours).</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Expérience 2 -->
-                <div class="flex flex-col md:flex-row justify-between items-center mb-16 reveal-up group">
-                    <div class="w-full md:w-5/12 text-left md:text-right pr-0 md:pr-8 mb-4 md:mb-0 order-1 md:order-1">
-                        <span class="text-xs text-gray-500 font-mono">AOÛT 2024 — AOÛT 2025</span>
+                <!-- Exp 2 : Groupama Centre Atlantique -->
+                <div class="timeline-item reveal-up">
+                    <div class="timeline-marker">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line-segment"></div>
                     </div>
-                    <div class="w-8 h-8 rounded-full bg-cyan-600 border-4 border-black z-10 shadow-[0_0_15px_#0891b2] hidden md:block order-2"></div>
-                    <div class="w-full md:w-5/12 order-3">
-                        <div class="glass-panel p-6 rounded-xl border-l-4 border-l-cyan-500 hover:bg-white/5 transition-colors">
-                            <h4 class="text-xl font-bold text-white">Technicien Pilotage & Orga.</h4>
-                            <p class="text-cyan-400 text-sm font-bold tracking-wider mb-2 flex items-center gap-2">
-                                <img src="image/Logo-Groupama-2025.webp" alt="Groupama" class="h-4 w-auto object-contain opacity-70">
-                                GROUPAMA CENTRE ATL. • NIORT
-                            </p>
-                            <p class="text-gray-400 text-sm leading-relaxed mb-3">
-                                Automatisation (VBA, Python, SQL) et Business Intelligence (QlikSense).
-                                <br>Audit et refonte de projets. Développement SMS Marketing.
-                            </p>
-                            <div class="flex gap-2 flex-wrap">
-                                <span class="text-[10px] px-2 py-1 bg-white/5 rounded text-gray-400">Python</span>
-                                <span class="text-[10px] px-2 py-1 bg-white/5 rounded text-gray-400">SQL</span>
-                                <span class="text-[10px] px-2 py-1 bg-white/5 rounded text-gray-400">QlikSense</span>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <h4 class="timeline-role">Technicien Pilotage & Organisation</h4>
+                                <p class="timeline-company">
+                                    <img src="image/Logo-Groupama-2025.webp" alt="Groupama" class="timeline-logo">
+                                    Groupama Centre Atlantique — Niort
+                                </p>
                             </div>
+                            <span class="timeline-date">Août 2024 — Août 2025</span>
                         </div>
+                        <ul class="timeline-details">
+                            <li>Automatisation de processus métier via Python, SQL et intégrations API, générant un gain de productivité significatif.</li>
+                            <li>Conception d'applications décisionnelles pour plusieurs directions sur QlikSense — devenue <strong>l'outil de référence le plus utilisé par les responsables d'équipe commerciale</strong> pour le suivi des performances.</li>
+                            <li>Audit de l'existant et rédaction de cahiers des charges pour des projets de refonte d'infrastructure data.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -227,99 +304,140 @@
     </section>
 
     <!-- SKILLS & EDUCATION GRID -->
-    <section id="skills" class="py-24 px-4 md:px-20 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section id="skills" class="py-24 px-4 md:px-20 max-w-6xl mx-auto relative z-10">
+        <div class="section-header reveal-up">
+            <span class="section-tag">Expertise</span>
+            <h3 class="section-title">Compétences & Formation</h3>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
             <!-- Education Col -->
             <div class="col-span-1 reveal-up">
-                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-                    <i class="fas fa-graduation-cap text-purple-500"></i> FORMATION
+                <h3 class="skills-section-title">
+                    <i class="fas fa-graduation-cap"></i> Formation
                 </h3>
-                <div class="space-y-6">
-                    <div class="glass-panel p-6 rounded-xl border-t-purple-500/50">
-                        <div class="flex justify-between items-start mb-2">
-                            <h4 class="font-bold">Ingénieur Big Data & ML</h4>
-                            <span class="text-xs bg-purple-900/50 px-2 py-1 rounded text-purple-300">2025-28</span>
+                <div class="space-y-5">
+                    <div class="edu-card">
+                        <div class="edu-header">
+                            <h4 class="edu-title">Diplôme Ingénieur Big Data & ML</h4>
+                            <span class="edu-badge edu-badge-current">2025-28</span>
                         </div>
-                        <p class="text-sm text-gray-400 mb-2 flex items-center gap-2">
-                            <img src="image/Logo_Efrei_2022.svg.png" alt="EFREI" class="h-4 w-auto object-contain opacity-70">
+                        <p class="edu-school">
+                            <img src="image/Logo_Efrei_2022.svg.png" alt="EFREI" class="edu-logo">
                             EFREI Paris, Panthéon-Assas
                         </p>
-                        <p class="text-xs text-gray-500">ML, Text Mining, NoSQL, Cloud, DevOps, MLOps.</p>
+                        <p class="edu-detail">Machine Learning, Text Mining, Statistiques appliquées, Programmation fonctionnelle, Data Visualisation, NoSQL, Cloud computing, DevOps & MLOps.</p>
+                        <span class="edu-status">En cours</span>
                     </div>
-                    <div class="glass-panel p-6 rounded-xl">
-                        <div class="flex justify-between items-start mb-2">
-                            <h4 class="font-bold">DUT Science des Données</h4>
-                            <span class="text-xs bg-gray-800 px-2 py-1 rounded text-gray-400">2023-25</span>
+                    <div class="edu-card">
+                        <div class="edu-header">
+                            <h4 class="edu-title">DUT Science des Données</h4>
+                            <span class="edu-badge">2023-25</span>
                         </div>
-                        <p class="text-sm text-gray-400 mb-2 flex items-center gap-2">
-                            <img src="image/POITIERS-UNIVERSITE-CMJN-2014.png" alt="Université de Poitiers" class="h-4 w-auto object-contain opacity-70">
+                        <p class="edu-school">
+                            <img src="image/POITIERS-UNIVERSITE-CMJN-2014.png" alt="IUT Poitiers" class="edu-logo">
                             IUT Poitiers
                         </p>
-                        <span class="text-xs text-green-400 border border-green-500/30 px-2 py-0.5 rounded-full">Mention Bien</span>
+                        <span class="edu-mention">✦ Mention Bien</span>
+                    </div>
+                </div>
+
+                <!-- Langues -->
+                <div class="mt-6">
+                    <h3 class="skills-section-title">
+                        <i class="fas fa-globe"></i> Langues
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="lang-item">
+                            <span class="lang-name">Français</span>
+                            <span class="lang-level">Natif</span>
+                        </div>
+                        <div class="lang-item">
+                            <span class="lang-name">Anglais</span>
+                            <span class="lang-level">Professionnel</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Skills Cols -->
-            <div class="col-span-1 md:col-span-2 reveal-up delay-100">
-                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-                    <i class="fas fa-microchip text-cyan-500"></i> COMPÉTENCES TECHNIQUES
+            <div class="col-span-1 lg:col-span-2 reveal-up">
+                <h3 class="skills-section-title">
+                    <i class="fas fa-microchip"></i> Stack Technique
                 </h3>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <!-- Data & AI -->
-                    <div class="glass-panel p-5 rounded-xl hover:border-cyan-500/30 transition-colors">
-                        <h5 class="text-cyan-400 font-bold text-sm mb-3 uppercase tracking-wider">Data Science & IA</h5>
+                    <div class="skill-card skill-card-ai">
+                        <h5 class="skill-card-title">Data Science & IA</h5>
                         <div class="flex flex-wrap gap-2">
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Scikit-learn</span>
-                            <span class="tech-tag">R / SAS</span>
-                            <span class="tech-tag text-white border-white/20">Prompt Eng.</span>
-                            <span class="tech-tag">Agents IA</span>
-                            <span class="tech-tag">Stats Analytiques</span>
+                            <span class="tech-tag accent-cyan">PyTorch</span>
+                            <span class="tech-tag accent-cyan">TensorFlow</span>
+                            <span class="tech-tag accent-cyan">Scikit-learn</span>
+                            <span class="tech-tag accent-cyan">R</span>
+                            <span class="tech-tag accent-cyan">Stats Analytiques</span>
+                            <span class="tech-tag accent-cyan">Structure de données</span>
+                        </div>
+                    </div>
+
+                    <!-- GenAI -->
+                    <div class="skill-card skill-card-genai">
+                        <h5 class="skill-card-title">GenAI</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag accent-emerald">Systèmes Prompt</span>
+                            <span class="tech-tag accent-emerald">LangChain</span>
+                            <span class="tech-tag accent-emerald">Autogen</span>
+                            <span class="tech-tag accent-emerald">RAG</span>
+                            <span class="tech-tag accent-emerald">Agents IA</span>
+                            <span class="tech-tag accent-emerald">ChromaDB</span>
+                        </div>
+                    </div>
+
+                    <!-- Data Eng & BI -->
+                    <div class="skill-card skill-card-data">
+                        <h5 class="skill-card-title">Data Eng & BI</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag accent-blue">SQL (PostgreSQL, MySQL, Oracle)</span>
+                            <span class="tech-tag accent-blue">NoSQL</span>
+                            <span class="tech-tag accent-blue">Python (Pandas, Streamlit)</span>
+                            <span class="tech-tag accent-blue">ETL</span>
+                            <span class="tech-tag accent-blue">QlikSense</span>
+                            <span class="tech-tag accent-blue">Scraping</span>
                         </div>
                     </div>
 
                     <!-- Backend -->
-                    <div class="glass-panel p-5 rounded-xl hover:border-purple-500/30 transition-colors">
-                        <h5 class="text-purple-400 font-bold text-sm mb-3 uppercase tracking-wider">Backend Dev</h5>
+                    <div class="skill-card skill-card-backend">
+                        <h5 class="skill-card-title">Développement Backend</h5>
                         <div class="flex flex-wrap gap-2">
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag text-white border-white/20">Hono</span>
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">C</span>
-                            <span class="tech-tag">RESTful Arch.</span>
-                            <span class="tech-tag">Middleware Auth</span>
+                            <span class="tech-tag accent-purple">Node.js / Hono</span>
+                            <span class="tech-tag accent-purple">PHP</span>
+                            <span class="tech-tag accent-purple">Java</span>
+                            <span class="tech-tag accent-purple">C</span>
+                            <span class="tech-tag accent-purple">REST API</span>
+                            <span class="tech-tag accent-purple">Auth Middleware</span>
+                            <span class="tech-tag accent-purple">Validation</span>
                         </div>
                     </div>
 
-                    <!-- Data Eng -->
-                    <div class="glass-panel p-5 rounded-xl hover:border-blue-500/30 transition-colors">
-                        <h5 class="text-blue-400 font-bold text-sm mb-3 uppercase tracking-wider">Data Eng & BI</h5>
+                    <!-- Frontend -->
+                    <div class="skill-card skill-card-front">
+                        <h5 class="skill-card-title">Frontend</h5>
                         <div class="flex flex-wrap gap-2">
-                            <span class="tech-tag">SQL (Postgre/Oracle)</span>
-                            <span class="tech-tag">NoSQL</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">ETL (Talend/Azure)</span>
-                            <span class="tech-tag">PowerBI</span>
-                            <span class="tech-tag">QlikSense</span>
-                            <span class="tech-tag">Scraping</span>
+                            <span class="tech-tag accent-pink">TypeScript</span>
+                            <span class="tech-tag accent-pink">React Native / Expo</span>
+                            <span class="tech-tag accent-pink">JavaScript</span>
                         </div>
                     </div>
 
-                    <!-- Frontend & DevOps -->
-                    <div class="glass-panel p-5 rounded-xl hover:border-pink-500/30 transition-colors">
-                        <h5 class="text-pink-400 font-bold text-sm mb-3 uppercase tracking-wider">Front & DevOps</h5>
+                    <!-- DevOps -->
+                    <div class="skill-card skill-card-devops">
+                        <h5 class="skill-card-title">Cloud, DevOps & Systèmes</h5>
                         <div class="flex flex-wrap gap-2">
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag text-white border-white/20">React Native / Expo</span>
-                            <span class="tech-tag">Tailwind</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">Git / GitHub</span>
-                            <span class="tech-tag">CI/CD</span>
+                            <span class="tech-tag accent-orange">Docker</span>
+                            <span class="tech-tag accent-orange">Git / GitHub</span>
+                            <span class="tech-tag accent-orange">Invite de commande</span>
                         </div>
                     </div>
                 </div>
@@ -327,12 +445,34 @@
         </div>
     </section>
 
-    <!-- Footer Simple -->
-    <footer class="text-center py-8 text-xs text-gray-600 uppercase tracking-widest border-t border-white/5 mt-10">
-        &copy; 2025 Marius Badoz. Tous droits réservés.
+    <!-- LOISIR -->
+    <section class="py-16 px-4 md:px-20 max-w-6xl mx-auto relative z-10 reveal-up">
+        <div class="hobby-card">
+            <i class="fas fa-volleyball-ball hobby-icon"></i>
+            <div>
+                <h4 class="hobby-title">Handball — Nationale 3</h4>
+                <p class="hobby-desc">Joueur compétiteur en championnat national. Esprit d'équipe, discipline et persévérance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-main">
+        <div class="footer-content">
+            <div class="footer-left">
+                <span class="footer-logo">[M.B]</span>
+                <p class="footer-tagline">AI Solution Architect & GenAI Specialist</p>
+            </div>
+            <div class="footer-links">
+                <a href="mailto:badozmarius@gmail.com" class="interactable"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/marius-badoz/" target="_blank" rel="noopener noreferrer" class="interactable"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/mbadoz" target="_blank" rel="noopener noreferrer" class="interactable"><i class="fab fa-github"></i></a>
+
+            </div>
+        </div>
+        <p class="footer-copy">&copy; 2026 Marius Badoz — Tous droits réservés.</p>
     </footer>
 
-    <!-- Custom Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
