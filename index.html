@@ -6,9 +6,17 @@
     <title>Marius Badoz | AI Solution Architect & GenAI Specialist</title>
     <meta name="description" content="Portfolio de Marius Badoz — Ingénieur Solution Architect spécialisé en IA Générative, Data Engineering et développement Full Stack.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.170.0/examples/jsm/"
+      }
+    }
+    </script>
 </head>
 <body class="antialiased">
 
@@ -36,6 +44,9 @@
                 <a href="#experience" class="interactable nav-link">Parcours</a>
                 <a href="#skills" class="interactable nav-link">Stack</a>
             </div>
+            <button id="btn-3d-mode" class="btn-3d-mode interactable" title="Version 3D">
+                <i class="fas fa-cube"></i> <span>3D</span>
+            </button>
             <div class="flex gap-3 items-center">
                 <a href="https://www.linkedin.com/in/marius-badoz/" target="_blank" rel="noopener noreferrer" class="interactable social-icon social-linkedin" aria-label="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
@@ -473,6 +484,132 @@
         <p class="footer-copy">&copy; 2026 Marius Badoz — Tous droits réservés.</p>
     </footer>
 
+    <!-- ═══ PIXEL ART WORLD OVERLAY ═══ -->
+    <div id="pixel-world" class="pixel-world hidden">
+
+        <!-- LOADING SCREEN -->
+        <div id="pixel-loading" class="pixel-loading">
+            <div class="pixel-loading-content">
+                <div class="pixel-loading-title">▶ CHARGEMENT DU MONDE...</div>
+                <div class="pixel-loading-bar">
+                    <div id="pixel-loading-fill" class="pixel-loading-fill"></div>
+                </div>
+                <p id="pixel-loading-status" class="pixel-loading-status">Préparation...</p>
+            </div>
+        </div>
+
+        <!-- HERO ROOM (Pixel Art) -->
+        <section id="pixel-hero-section" class="pixel-hero-section">
+            <canvas id="pixel-canvas-hero" style="display:none"></canvas>
+            <div class="pixel-hero-bg">
+                <img src="assets/pixel/bg_hero_room.png" alt="" class="pixel-hero-bg-img">
+                <img id="pixel-hero-char" src="assets/pixel/marius_sprites/rotations/south.png" alt="Marius" class="pixel-hero-char-sprite">
+            </div>
+            <!-- Hero Bubble Dialogue -->
+            <div id="pixel-hero-bubble" class="pixel-hero-bubble">
+                <div class="pixel-hero-bubble-arrow"></div>
+                <p id="pixel-hero-bubble-text" class="pixel-hero-bubble-text"></p>
+            </div>
+            <!-- Hero Links -->
+            <div class="pixel-hero-links">
+                <a href="https://www.linkedin.com/in/marius-badoz/" target="_blank" class="pixel-hero-link-item pixel-hero-obj-left" title="LinkedIn">
+                    <span class="pixel-hero-link-badge">?</span>
+                    <img src="assets/pixel/logo_linkedin.png" alt="LinkedIn" class="pixel-hero-link-icon">
+                </a>
+                <a href="https://github.com/mbadoz" target="_blank" class="pixel-hero-link-item pixel-hero-obj-center" title="GitHub">
+                    <span class="pixel-hero-link-badge">?</span>
+                    <img src="assets/pixel/mascot_github.png" alt="GitHub" class="pixel-hero-link-icon">
+                </a>
+                <a href="cv.html" target="_blank" class="pixel-hero-link-item pixel-hero-obj-right" title="Mon CV">
+                    <span class="pixel-hero-link-badge">?</span>
+                    <img src="assets/pixel/scroll_cv.png" alt="Mon CV" class="pixel-hero-link-icon">
+                </a>
+            </div>
+        </section>
+
+        <!-- 2.5D WORLD SECTION -->
+        <section id="pixel-world-section" class="pixel-world-section">
+            <!-- Zones Container -->
+            <div id="pixel-zones-container" class="pixel-zones-container"></div>
+            
+            <!-- Character Sprite -->
+            <div id="pixel-character" class="pixel-character idle">
+                <img id="pixel-char-sprite" class="pixel-char-sprite"
+                     src="assets/pixel/marius_sprites/rotations/south.png" alt="Marius">
+            </div>
+        </section>
+
+        <!-- YEAR HUD -->
+        <div id="pixel-year-hud" class="pixel-year-hud">
+            <span id="pixel-year-text" class="pixel-year-text"></span>
+        </div>
+
+        <!-- DIALOGUE BOX -->
+        <div id="pixel-dialogue" class="pixel-dialogue" style="display:none">
+            <div class="pixel-dialogue-frame">
+                <img src="assets/pixel/portrait_marius.png" alt="Marius" class="pixel-dialogue-portrait">
+                <div class="pixel-dialogue-body">
+                    <span id="pixel-dialogue-section" class="pixel-dialogue-section"></span>
+                    <h4 id="pixel-dialogue-name" class="pixel-dialogue-name"></h4>
+                    <p id="pixel-dialogue-text" class="pixel-dialogue-text"></p>
+                    <div class="pixel-dialogue-actions">
+                        <button id="pixel-dialogue-more" class="pixel-dialogue-btn">▶ EN SAVOIR PLUS</button>
+                        <button id="pixel-dialogue-close" class="pixel-dialogue-btn pixel-dialogue-btn-close">✕ FERMER</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL PANEL -->
+        <div id="pixel-modal" class="pixel-modal" style="display:none">
+            <div class="pixel-modal-overlay" onclick="document.getElementById('pixel-modal-close').click()"></div>
+            <div class="pixel-modal-frame">
+                <button id="pixel-modal-close" class="pixel-modal-close-btn">✕</button>
+                <div id="pixel-modal-content" class="pixel-modal-inner"></div>
+            </div>
+        </div>
+
+        <!-- INVENTORY -->
+        <button id="pixel-inv-btn" class="pixel-inv-btn" title="Inventaire (I)">
+            <img src="assets/pixel/icon_chest.png" alt="" class="pixel-inv-btn-icon-img">
+            <span class="pixel-inv-btn-label">SKILLS</span>
+        </button>
+        <div id="pixel-inventory" class="pixel-inventory" style="display:none">
+            <div class="pixel-inv-frame">
+                <div class="pixel-inv-header">
+                    <h3 class="pixel-inv-title">🎒 INVENTAIRE — SKILLS</h3>
+                    <button id="pixel-inv-close" class="pixel-inv-close-btn">✕</button>
+                </div>
+                <div id="pixel-inv-categories" class="pixel-inv-categories"></div>
+                <div id="pixel-inv-items" class="pixel-inv-items"></div>
+            </div>
+        </div>
+
+        <!-- TRANSITION OVERLAY -->
+        <div id="pixel-transition" class="pixel-transition"></div>
+
+        <!-- AIRPLANE (Niort → Paris) -->
+        <div id="pixel-airplane" class="pixel-airplane" style="display:none">
+            <img src="assets/pixel/avion_transition.png" alt="" class="pixel-airplane-sprite">
+        </div>
+
+        <!-- SCANLINES -->
+        <div class="pixel-scanlines"></div>
+
+        <!-- PROGRESS BAR -->
+        <div class="pixel-progress">
+            <div id="pixel-progress-fill" class="pixel-progress-fill"></div>
+        </div>
+
+        <!-- SCROLL HINT -->
+        <div class="pixel-scroll-hint">▼ SCROLLE POUR EXPLORER ▼</div>
+
+        <!-- EXIT BUTTON -->
+        <button id="pixel-exit-btn" class="pixel-exit-btn">✕ QUITTER</button>
+
+    </div>
+
     <script src="script.js"></script>
+    <script type="module" src="pixel-world.js"></script>
 </body>
 </html>
